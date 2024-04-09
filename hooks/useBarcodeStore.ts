@@ -5,7 +5,7 @@ type BarcodeStore = {
   setBarcode: (newBarcode: string) => void;
 };
 
-export const useBearStore = create<BarcodeStore>((set) => ({
+export const useBarcodeStore = create<BarcodeStore>((set) => ({
   barcode: '',
   setBarcode: (newBarcode) => set(() => ({ barcode: newBarcode })),
 }));
