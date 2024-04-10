@@ -15,19 +15,10 @@ export default function CameraModalScreen() {
   const [permission, requestPermission] = useCameraPermissions();
   const { isRefreshing, focusSquare, onTap } = useAutofocus(650);
 
-  if (!permission) {
+  if (!permission || !permission.granted) {
     return (
       <View style={styles.container}>
-        <Text>No permission</Text>
-        <Button title="Request permission" onPress={requestPermission} />
-      </View>
-    );
-  }
-
-  if (!permission.granted) {
-    return (
-      <View style={styles.container}>
-        <Text>No permission</Text>
+        <Text>This app currently has no permission</Text>
         <Button title="Request permission" onPress={requestPermission} />
       </View>
     );
@@ -86,6 +77,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   camera: {
     flex: 1,
