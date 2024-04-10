@@ -1,11 +1,10 @@
 import { FlatList, Pressable, StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import { Link } from 'expo-router';
 import { useBarcodeStore } from '@/hooks/useBarcodeStore';
-import { getAllergens, getIngredients } from '@/utils/dataMapper';
+import { getIngredients } from '@/utils/dataMapper';
 import { useEffect, useState } from 'react';
+import { ProductOverview } from '@/components/ProductOverview';
 
 export default function TabOneScreen() {
   const [ingredients, setIngredients] = useState<string[]>();
@@ -23,20 +22,16 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Tab One</Text>
-      </View>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <ProductOverview productName={'Tortilla Chips'} calories={450} />
       <View style={styles.ingredientContainer}>
-        <Link href="/CameraModal" asChild>
-          <Pressable style={styles.cameraButton}>
-            <Text>Open Barcode Scanner</Text>
-          </Pressable>
-        </Link>
-        <Text>This is the barcode: {barcode}</Text>
-        <Text>This product has the following ingredients:</Text>
+        <Text style={styles.title}>Ingredients</Text>
         <FlatList data={ingredients} renderItem={({ item }) => <Text>{item}</Text>} />
       </View>
+      <Link href="/CameraModal" asChild>
+        <Pressable style={styles.cameraButton}>
+          <Text style={styles.cameraButtonText}>Open Scanner</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 }
@@ -48,12 +43,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 16,
   },
-  titleContainer: {
-    flex: 1,
-    marginTop: 32,
-  },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   separator: {
@@ -62,15 +53,21 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   cameraButton: {
-    padding: 10,
+    position: 'absolute',
+    bottom: 16,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
     borderRadius: 8,
-    backgroundColor: 'blue',
+    backgroundColor: 'lightblue',
     alignItems: 'center',
-    width: '80%',
+  },
+  cameraButtonText: {
+    fontSize: 16,
   },
   ingredientContainer: {
     flex: 2,
     gap: 8,
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    width: '90%',
   },
 });
