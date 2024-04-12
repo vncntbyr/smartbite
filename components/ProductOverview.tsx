@@ -1,19 +1,34 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
+import { View, Text } from '@/components/Themed';
 import { ScoreDisplay } from './ScoreDisplay';
 
 type ProductOverviewProps = {
+  imgUrl: string;
   productName: string;
-  calories: number;
+  nutrients: Record<string, number>;
 };
 
-export const ProductOverview = ({ productName, calories }: ProductOverviewProps) => {
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
+
+export const ProductOverview = ({ imgUrl, productName, nutrients }: ProductOverviewProps) => {
+  const { energyKcal, energyKcalUnit } = nutrients;
   return (
     <View style={styles.overviewContainer}>
       <View style={styles.imageTitleContainer}>
-        <View style={styles.imageContainer} />
+        <Image
+          style={styles.image}
+          source={imgUrl}
+          placeholder={blurhash}
+          contentFit="cover"
+          transition={1000}
+        />
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{productName}</Text>
-          <Text>{calories} kcal / 100g</Text>
+          <Text>
+            {energyKcal} {energyKcalUnit} / 100g
+          </Text>
         </View>
       </View>
       <View style={styles.scoreContainer}>
@@ -43,7 +58,6 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     shadowOpacity: 0.2,
     borderRadius: 16,
-    backgroundColor: 'white',
     elevation: 1,
     width: '90%',
   },
@@ -52,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  imageContainer: {
+  image: {
     minWidth: 96,
     maxWidth: 96,
     minHeight: 96,
