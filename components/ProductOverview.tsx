@@ -7,12 +7,22 @@ type ProductOverviewProps = {
   imgUrl: string;
   productName: string;
   nutrients: Record<string, number>;
+  nutriScore?: number;
+  novaScore?: number;
+  plantScore?: number;
 };
 
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
-export const ProductOverview = ({ imgUrl, productName, nutrients }: ProductOverviewProps) => {
+export const ProductOverview = ({
+  imgUrl,
+  productName,
+  nutrients,
+  nutriScore,
+  novaScore,
+  plantScore,
+}: ProductOverviewProps) => {
   const { energyKcal, energyKcalUnit } = nutrients;
   return (
     <View style={styles.overviewContainer}>
@@ -32,9 +42,15 @@ export const ProductOverview = ({ imgUrl, productName, nutrients }: ProductOverv
         </View>
       </View>
       <View style={styles.scoreContainer}>
-        <ScoreDisplay score={1} scoreTitle="Processed" />
-        <ScoreDisplay score={3} scoreTitle="Nutrition" />
-        <ScoreDisplay score={5} scoreTitle="Plant Based" />
+        {typeof novaScore === 'number' && novaScore >= 0 && (
+          <ScoreDisplay score={novaScore} scoreTitle="Processed" />
+        )}
+        {typeof nutriScore === 'number' && nutriScore >= 0 && (
+          <ScoreDisplay score={nutriScore} scoreTitle="Nutrition" />
+        )}
+        {typeof plantScore === 'number' && plantScore >= 0 && (
+          <ScoreDisplay score={plantScore} scoreTitle="Plant Based" />
+        )}
       </View>
     </View>
   );
