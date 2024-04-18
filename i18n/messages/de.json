@@ -1,0 +1,16 @@
+{
+  "infoModal": {
+    "title": "Info",
+    "content": "This is a simple react app that demonstrates how to use react-intl for internationalization. The app is localized in two languages: English and German. The app has two buttons at the top to switch between the languages. The app has a simple info modal that can be opened by clicking the info button at the top right corner of the app. The app has a simple counter that can be incremented by clicking the increment button. The app has a simple form that can be used to add a new item to the list. The app has a simple list that displays the items added using the form."
+  },
+  "bottomTabNavigation": {
+    "history": "Verlauf",
+    "scan": "Scannen",
+    "about": "Über uns"
+  },
+  "scores": {
+    "processedGrade": "Verarbeitung",
+    "nutrition": "Nährwert",
+    "plantGrade": "Pflanzenbasis"
+  }
+}
