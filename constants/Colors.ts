@@ -9,6 +9,7 @@ export type ColorType = {
   yellow: Record<string, string>;
   orange: Record<string, string>;
   gray: Record<string, string>;
+  blue: Record<string, string>;
 };
 
 export const Colors: ColorType = {
@@ -26,13 +27,24 @@ export const Colors: ColorType = {
   red: {
     100: '#ffeaeb',
     200: '#ff9fa6',
-    300: '#ff6d7f',
+    300: '#ff9495',
     400: '#ff3b58',
     500: '#ff0a32',
     600: '#cc0026',
     700: '#99001b',
     800: '#66000f',
     900: '#330005',
+  },
+  blue: {
+    100: '#f0f8ff',
+    200: '#bcccfd',
+    300: '#97b3ff',
+    400: '#5d7bf1',
+    500: '#3b51d3',
+    600: '#2b3cad',
+    700: '#182375',
+    800: '#080c42',
+    900: '#020418',
   },
   yellow: {
     100: '#fff9e5',
@@ -57,15 +69,15 @@ export const Colors: ColorType = {
     900: '#331100',
   },
   gray: {
-    100: '#f2f2f2',
-    200: '#d9d9d9',
-    300: '#bfbfbf',
-    400: '#a6a6a6',
-    500: '#8c8c8c',
-    600: '#737373',
-    700: '#595959',
-    800: '#404040',
-    900: '#262626',
+    100: '#EDF2F7',
+    200: '#E2E8F0',
+    300: '#CBD5E0',
+    400: '#A0AEC0',
+    500: '#718096',
+    600: '#4A5568',
+    700: '#2D3748',
+    800: '#1A202C',
+    900: '#171923',
   },
 };
 
