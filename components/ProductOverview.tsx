@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import { View, Text } from '@/components/Themed';
 import { ScoreDisplay } from './ScoreDisplay';
+import { getShadowColor } from '@/utils/color';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type ProductOverviewProps = {
   imgUrl: string;
@@ -23,9 +25,18 @@ export const ProductOverview = ({
   novaScore,
   plantScore,
 }: ProductOverviewProps) => {
+  const t = useTranslation();
   const { energyKcal, energyKcalUnit } = nutrients;
   return (
-    <View style={styles.overviewContainer}>
+    <View
+      style={[
+        styles.overviewContainer,
+        {
+          borderColor: getShadowColor('gray'),
+          shadowColor: getShadowColor('gray'),
+        },
+      ]}
+    >
       <View style={styles.imageTitleContainer}>
         <Image
           style={styles.image}
@@ -43,13 +54,13 @@ export const ProductOverview = ({
       </View>
       <View style={styles.scoreContainer}>
         {typeof novaScore === 'number' && novaScore >= 0 && (
-          <ScoreDisplay score={novaScore} scoreTitle="Processed" />
+          <ScoreDisplay score={novaScore} scoreTitle={t('productOverview.processedGrade')} />
         )}
         {typeof nutriScore === 'number' && nutriScore >= 0 && (
-          <ScoreDisplay score={nutriScore} scoreTitle="Nutrition" />
+          <ScoreDisplay score={nutriScore} scoreTitle={t('productOverview.nutrition')} />
         )}
         {typeof plantScore === 'number' && plantScore >= 0 && (
-          <ScoreDisplay score={plantScore} scoreTitle="Plant Based" />
+          <ScoreDisplay score={plantScore} scoreTitle={t('productOverview.plantGrade')} />
         )}
       </View>
     </View>
@@ -63,17 +74,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 16,
     padding: 16,
-    borderColor: 'lightgray',
     borderWidth: 1,
-    borderStyle: 'solid',
-    shadowColor: 'blue',
+    shadowRadius: 3,
     shadowOffset: {
       width: 0,
       height: 0,
     },
-    shadowRadius: 3,
-    shadowOpacity: 0.2,
-    borderRadius: 16,
+    shadowOpacity: 1,
+    borderRadius: 8,
     elevation: 1,
     width: '90%',
   },
