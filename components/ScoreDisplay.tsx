@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { View, Text } from '@/components/Themed';
-import { getCorrectColor } from '@/utils/color';
+import { getBackgroundColor } from '@/utils/color';
 
 export type ScoreDisplayProps = {
   score: number;
@@ -9,10 +9,10 @@ export type ScoreDisplayProps = {
 
 export const ScoreDisplay = ({ score, scoreTitle }: ScoreDisplayProps) => {
   const calculateBackgroundColor = () => {
-    if (score === 0) return getCorrectColor('green');
-    if (score <= 2) return getCorrectColor('yellow');
-    if (score <= 3) return getCorrectColor('orange');
-    return getCorrectColor('red');
+    if (score === 0) return getBackgroundColor('green');
+    if (score <= 2) return getBackgroundColor('yellow');
+    if (score <= 3) return getBackgroundColor('orange');
+    return getBackgroundColor('red');
   };
   return (
     <View style={styles.container}>

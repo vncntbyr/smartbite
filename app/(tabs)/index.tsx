@@ -8,6 +8,7 @@ import { ProductOverview } from '@/components/ProductOverview';
 import { IngredientItem } from '@/components/IngredientItem';
 import type { Scores } from '@/types/scores';
 import type { Ingredient } from '@/types/Ingredient';
+import { getBackgroundColor } from '@/utils/color';
 
 export default function TabOneScreen() {
   const [ingredients, setIngredients] = useState<Ingredient[]>();
@@ -55,8 +56,12 @@ export default function TabOneScreen() {
           )}
         />
       </View>
-      <Link href="/CameraModal" asChild>
-        <Pressable style={styles.cameraButton}>
+      <Link
+        href="/CameraModal"
+        asChild
+        style={[styles.cameraButton, { backgroundColor: getBackgroundColor('blue') }]}
+      >
+        <Pressable>
           <Text style={styles.cameraButtonText}>Open Scanner</Text>
         </Pressable>
       </Link>
@@ -86,7 +91,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 8,
-    backgroundColor: 'lightblue',
     alignItems: 'center',
   },
   cameraButtonText: {
@@ -99,7 +103,8 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   ingredientContentContainer: {
-    gap: 6,
+    gap: 8,
+    padding: 2,
   },
   ingredientList: {
     width: '100%',
