@@ -1,14 +1,22 @@
 import { useEffect, useState } from 'react';
-import { FlatList, Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Link } from 'expo-router';
 import { useBarcodeStore } from '@/hooks/useBarcodeStore';
-import { getImgUrl, getIngredients, getNutrients, getScores } from '@/utils/dataMapper';
+import {
+  getHistoryData,
+  getImgUrl,
+  getIngredients,
+  getNutrients,
+  getScores,
+} from '@/utils/dataMapper';
 import { ProductOverview } from '@/components/ProductOverview';
 import { IngredientItem } from '@/components/IngredientItem';
-import type { Scores } from '@/types/scores';
+import type { Scores } from '@/types/Scores';
 import type { Ingredient } from '@/types/Ingredient';
 import { getBackgroundColor } from '@/utils/color';
+import { addToHistory } from '@/storage/store';
+import { BarList } from '@/components/BarList';
 
 export default function TabOneScreen() {
   const [ingredients, setIngredients] = useState<Ingredient[]>();
@@ -24,11 +32,14 @@ export default function TabOneScreen() {
     const getFoodData = async () => {
       const result = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}.json`);
       const foodData = await result.json();
+      // TODO: compress to one function which returns an object containing all the data
       setIngredients(getIngredients(foodData));
       setProductName(foodData.product.product_name);
-      setImgUrl(getImgUrl(foodData));
+      setImgUrl(getImgUrl(foodData).normal);
       setNutrients(getNutrients(foodData));
       setScores(getScores(foodData));
+      addToHistory(getHistoryData(foodData));
+      // add to history
     };
     getFoodData();
   }, [barcode]);
@@ -43,17 +54,17 @@ export default function TabOneScreen() {
       />
       <View style={styles.ingredientContainer}>
         <Text style={styles.title}>Ingredients</Text>
-        <FlatList
+        <BarList
           data={ingredients}
-          contentContainerStyle={styles.ingredientContentContainer}
-          style={styles.ingredientList}
-          renderItem={({ item }) => (
-            <IngredientItem
-              ingredientName={item.name}
-              isVegan={item.isVegan}
-              isVegetarian={item.isVegetarian}
-            />
-          )}
+          renderItem={({ item }: { item: Ingredient }): JSX.Element => {
+            return (
+              <IngredientItem
+                ingredientName={item.name}
+                isVegan={item.isVegan}
+                isVegetarian={item.isVegetarian}
+              />
+            );
+          }}
         />
       </View>
       <Link
@@ -73,7 +84,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     gap: 16,
   },
   title: {
@@ -101,12 +111,5 @@ const styles = StyleSheet.create({
     gap: 8,
     alignItems: 'flex-start',
     width: '90%',
-  },
-  ingredientContentContainer: {
-    gap: 8,
-    padding: 2,
-  },
-  ingredientList: {
-    width: '100%',
   },
 });
