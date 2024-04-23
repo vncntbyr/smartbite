@@ -54,13 +54,13 @@ export const ProductOverview = ({
       </View>
       <View style={styles.scoreContainer}>
         {typeof novaScore === 'number' && novaScore >= 0 && (
-          <ScoreDisplay score={novaScore} scoreTitle={t('productOverview.processedGrade')} />
+          <ScoreDisplay score={novaScore} scoreTitle={t('scores.processedGrade')} />
         )}
         {typeof nutriScore === 'number' && nutriScore >= 0 && (
-          <ScoreDisplay score={nutriScore} scoreTitle={t('productOverview.nutrition')} />
+          <ScoreDisplay score={nutriScore} scoreTitle={t('scores.nutrition')} />
         )}
         {typeof plantScore === 'number' && plantScore >= 0 && (
-          <ScoreDisplay score={plantScore} scoreTitle={t('productOverview.plantGrade')} />
+          <ScoreDisplay score={plantScore} scoreTitle={t('scores.plantGrade')} />
         )}
       </View>
     </View>
