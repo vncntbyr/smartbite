@@ -1,5 +1,7 @@
+import type { HistoryEntry } from '@/types/History';
+import type { Images } from '@/types/Image';
 import type { Ingredient } from '@/types/Ingredient';
-import type { Scores } from '@/types/scores';
+import type { Scores } from '@/types/Scores';
 
 export const getAllergens = (data: any): any => {
   return data.product['allergens_from_ingredients'];
@@ -30,8 +32,12 @@ export const getIngredients = (data: any): Ingredient[] => {
   return extractIngredients(data.product.ingredients);
 };
 
-export const getImgUrl = (data: any): string => {
-  return data.product.image_url;
+export const getImgUrl = (data: any): Images => {
+  return {
+    normal: data.product.image_url,
+    thumb: data.product.image_thumb_url,
+    small: data.product.image_small_url,
+  };
 };
 
 export const getNutrients = (data: any): any => {
@@ -108,5 +114,14 @@ export const getScores = (data: any): Scores => {
     negativePoints: negative_points,
     positivePoints: positive_points,
     plantScore: getPlantScore(data.product.ingredients),
+  };
+};
+
+export const getHistoryData = (data: any): HistoryEntry => {
+  return {
+    barcode: data.code,
+    name: data.product.product_name,
+    thumbnailUrl: getImgUrl(data).thumb,
+    timestamp: new Date().toISOString(),
   };
 };
