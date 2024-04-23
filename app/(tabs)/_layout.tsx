@@ -24,6 +24,7 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       }}
+      initialRouteName="index"
     >
       <Tabs.Screen
         name="history"
