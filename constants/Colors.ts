@@ -10,6 +10,7 @@ export type ColorType = {
   orange: Record<string, string>;
   gray: Record<string, string>;
   blue: Record<string, string>;
+  black: Record<string, string>;
 };
 
 export const Colors: ColorType = {
@@ -78,6 +79,17 @@ export const Colors: ColorType = {
     700: '#2D3748',
     800: '#1A202C',
     900: '#171923',
+  },
+  black: {
+    100: '#f5f5f5',
+    200: '#e0e0e0',
+    300: '#bdbdbd',
+    400: '#9e9e9e',
+    500: '#757575',
+    600: '#616161',
+    700: '#424242',
+    800: '#212121',
+    900: '#000000',
   },
 };
 

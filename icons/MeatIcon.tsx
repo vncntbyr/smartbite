@@ -1,3 +1,4 @@
+import { getIconColor } from '@/utils/color';
 import * as React from 'react';
 import Svg, { Path, Ellipse, type SvgProps, G } from 'react-native-svg';
 // inspired by wishforge.games
@@ -5,7 +6,7 @@ export const MeatIcon = (props: SvgProps) => (
   <Svg id="Icons" viewBox="-2 -2 36 36" {...props}>
     <G
       fill="none"
-      stroke="black"
+      stroke={getIconColor('black')}
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
