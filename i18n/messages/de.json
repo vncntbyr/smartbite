@@ -1,7 +1,12 @@
 {
   "infoModal": {
-    "title": "Info",
-    "content": "This is a simple react app that demonstrates how to use react-intl for internationalization. The app is localized in two languages: English and German. The app has two buttons at the top to switch between the languages. The app has a simple info modal that can be opened by clicking the info button at the top right corner of the app. The app has a simple counter that can be incremented by clicking the increment button. The app has a simple form that can be used to add a new item to the list. The app has a simple list that displays the items added using the form."
+    "titel": "Info",
+    "sourceTitle": "Wie wir unsere Daten erhalten:",
+    "sourceText": "Wir verwenden die OpenFoodFacts API, um unsere Daten zu erhalten. Dies bedeutet, dass wir Zugang zu einer großen Datenbank mit Lebensmitteln haben. Dies ermöglicht es uns, Ihnen Informationen über das gescannte Produkt zur Verfügung zu stellen.",
+    "contributionTitle": "Wie Sie beitragen können:",
+    "contributionText": "Sie können helfen, indem Sie einen Beitrag zur OpenFoodFacts-Datenbank leisten. Du kannst dies tun, indem du Produkte mit deinem Handy scannst und Bilder hochlädst. Auf diese Weise können Sie dazu beitragen, die Datenbank noch größer und besser zu machen.",
+    "furtherInformation": "Erfahren Sie mehr auf der",
+    "externalLink": "OpenFoodFacts-Website"
   },
   "bottomTabNavigation": {
     "history": "Verlauf",

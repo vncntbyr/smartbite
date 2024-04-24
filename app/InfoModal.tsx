@@ -2,16 +2,24 @@ import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
+import { ExternalLink } from '@/components/ExternalLink';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export default function InfoModal() {
+  const t = useTranslation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      {/* USE THIS FOR OPEN WEBVIEW TO OPENFOODFACTS
-       WebBrowser.openBrowserAsync(props.href as string); */}
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <Text style={styles.title}>{t('infoModal.sourceTitle')}</Text>
+      <Text>{t('infoModal.sourceText')}</Text>
+      <Text style={styles.title}>{t('infoModal.contributionTitle')}</Text>
+      <Text>{t('infoModal.contributionText')}</Text>
+      <Text>
+        {t('infoModal.furtherInformation')}{' '}
+        <ExternalLink style={styles.link} href={'https://de.openfoodfacts.org/'}>
+          {t('infoModal.externalLink')}
+        </ExternalLink>
+      </Text>
     </View>
   );
 }
@@ -19,8 +27,8 @@ export default function InfoModal() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 15,
+    gap: 4,
   },
   title: {
     fontSize: 20,
@@ -30,5 +38,9 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: '80%',
+  },
+  link: {
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
 });
