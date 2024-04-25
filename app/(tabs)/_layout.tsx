@@ -6,6 +6,7 @@ import { Pressable } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useTranslation } from '@/hooks/useTranslation';
+import { useHistoryStore } from '@/storage/historyStore';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -16,6 +17,7 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
+  const { clearHistory } = useHistoryStore();
   const colorScheme = useColorScheme();
   const t = useTranslation();
 
@@ -31,6 +33,18 @@ export default function TabLayout() {
         options={{
           title: t('bottomTabNavigation.history'),
           tabBarIcon: ({ color }) => <TabBarIcon name="history" color={color} />,
+          headerRight: () => (
+            <Pressable onPress={() => clearHistory()}>
+              {({ pressed }) => (
+                <FontAwesome
+                  name="trash"
+                  size={25}
+                  color={Colors[colorScheme ?? 'light'].text}
+                  style={{ marginRight: 20, opacity: pressed ? 0.5 : 1 }}
+                />
+              )}
+            </Pressable>
+          ),
         }}
       />
       <Tabs.Screen
@@ -46,7 +60,7 @@ export default function TabLayout() {
                     name="info-circle"
                     size={25}
                     color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                    style={{ marginRight: 20, opacity: pressed ? 0.5 : 1 }}
                   />
                 )}
               </Pressable>
