@@ -12,6 +12,7 @@ export function BarList<T>({
   return (
     <FlatList
       data={data}
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={styles.ingredientContentContainer}
       style={styles.ingredientList}
       renderItem={renderItem}
