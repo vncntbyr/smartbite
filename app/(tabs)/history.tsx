@@ -1,29 +1,53 @@
-import { FlatList, SectionList, StyleSheet } from 'react-native';
+import { SectionList, StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
-import { useEffect, useState } from 'react';
-import { readHistory } from '@/storage/store';
-import { HistoryEntry } from '@/types/History';
-import { BarList } from '@/components/BarList';
+import { useCallback } from 'react';
 import { HistoryItem } from '@/components/HistoryItem';
+import { useFocusEffect } from 'expo-router';
+import { useHistoryStore } from '@/storage/historyStore';
 
 export default function HistoryScreen() {
   // TODO: Would it make sense to use something like swr for the async data fetching from the device?
   // TODO: Read from history and render data here
-  const [history, setHistory] = useState<HistoryEntry[] | undefined>();
-  useEffect(() => {
-    const getHistory = async () => {
-      return await readHistory();
-    };
-    getHistory().then((data) => setHistory(data));
-  }, []);
+  const { history, fetchHistory } = useHistoryStore();
 
+  // Fetch history when the screen is focused
+  useFocusEffect(
+    useCallback(() => {
+      // No need for an isActive flag, Zustand will handle unsubscriptions automatically
+      fetchHistory();
+    }, [fetchHistory]) // fetchHistory is stable and won't change, so it's safe to add as a dependency
+  );
+
+  if (!history) return null;
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>History</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <View style={styles.listContainer}>
-        <BarList
+        <SectionList
+          sections={history}
+          renderItem={({ item }): JSX.Element => {
+            const { barcode, name, thumbnailUrl } = item;
+            return <HistoryItem barcode={barcode} name={name} thumbnailUrl={thumbnailUrl} />;
+          }}
+          renderSectionHeader={({ section }): JSX.Element => {
+            if (typeof section.timestamp === 'string') {
+              const date = new Date(section.timestamp);
+              const day = date.getDate();
+              const month = date.getMonth();
+              const year = date.getFullYear();
+              return (
+                <Text>
+                  {day}.{month}.{year}
+                </Text>
+              );
+            }
+            return <></>;
+          }}
+          contentContainerStyle={styles.ingredientContentContainer}
+          style={styles.ingredientList}
+          showsVerticalScrollIndicator={false}
+        />
+        {/*    <BarList
           data={history}
           renderItem={({ item }): JSX.Element => {
             const { barcode, name, timestamp, thumbnailUrl } = item;
@@ -36,7 +60,7 @@ export default function HistoryScreen() {
               />
             );
           }}
-        />
+        /> */}
       </View>
     </View>
   );
@@ -46,18 +70,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
   listContainer: {
     width: '90%',
+  },
+  ingredientContentContainer: {
+    gap: 8,
+    padding: 2,
+  },
+  ingredientList: {
+    width: '100%',
   },
 });

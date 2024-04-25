@@ -1,4 +1,4 @@
-import type { HistoryEntry } from '@/types/History';
+import type { HistoryData } from '@/types/History';
 import type { Images } from '@/types/Image';
 import type { Ingredient } from '@/types/Ingredient';
 import type { Scores } from '@/types/Scores';
@@ -117,11 +117,10 @@ export const getScores = (data: any): Scores => {
   };
 };
 
-export const getHistoryData = (data: any): HistoryEntry => {
+export const getHistoryData = (data: any): HistoryData => {
   return {
     barcode: data.code,
     name: data.product.product_name,
     thumbnailUrl: getImgUrl(data).thumb,
-    timestamp: new Date().toISOString(),
   };
 };
