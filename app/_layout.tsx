@@ -8,6 +8,9 @@ import { useEffect } from 'react';
 import { useColorScheme } from '@/components/useColorScheme';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useTranslation } from '@/hooks/useTranslation';
+import { getBackgroundColor } from '@/utils/color';
+import { useThemeColor } from '@/components/Themed';
+import Colors from '@/constants/Colors';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -57,7 +60,20 @@ function RootLayoutNav() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
             name="InfoModal"
-            options={{ presentation: 'modal', title: t('infoModal.title') }}
+            options={{
+              presentation: 'modal',
+              title: t('infoModal.title'),
+              headerShown: false,
+              contentStyle: {
+                maxHeight: 'auto',
+                position: 'absolute',
+                bottom: 0,
+                height: 'auto',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+                backgroundColor: Colors[colorScheme ?? 'light'].background,
+              },
+            }}
           />
           <Stack.Screen
             name="CameraModal"

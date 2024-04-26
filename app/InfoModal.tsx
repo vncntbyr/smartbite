@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 15,
+    paddingBottom: 50,
+    backgroundColor: 'transparent',
     gap: 4,
   },
   title: {
