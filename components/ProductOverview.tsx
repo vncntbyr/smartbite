@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import { View, Text } from '@/components/Themed';
 import { ScoreDisplay } from './ScoreDisplay';
-import { getShadowColor } from '@/utils/color';
 import { useTranslation } from '@/hooks/useTranslation';
+import { ShadowView } from './ShadowView';
 
 type ProductOverviewProps = {
   imgUrl: string;
@@ -17,9 +17,9 @@ type ProductOverviewProps = {
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
-  // TODO: Images are not displayed well at the moment (bottles are cut off) -> think of improvement
-  // TODO: Sometimes there is no nutrition score data -> handle this case
-  // TODO: kcals are also not always present -> handle this case
+// TODO: Images are not displayed well at the moment (bottles are cut off) -> think of improvement
+// TODO: Sometimes there is no nutrition score data -> handle this case
+// TODO: kcals are also not always present -> handle this case
 export const ProductOverview = ({
   imgUrl,
   productName,
@@ -31,15 +31,7 @@ export const ProductOverview = ({
   const t = useTranslation();
   const { energyKcal, energyKcalUnit } = nutrients;
   return (
-    <View
-      style={[
-        styles.overviewContainer,
-        {
-          borderColor: getShadowColor('gray'),
-          shadowColor: getShadowColor('gray'),
-        },
-      ]}
-    >
+    <ShadowView style={styles.overviewContainer}>
       <View style={styles.imageTitleContainer}>
         <Image
           style={styles.image}
@@ -66,7 +58,7 @@ export const ProductOverview = ({
           <ScoreDisplay score={plantScore} scoreTitle={t('scores.plantGrade')} />
         )}
       </View>
-    </View>
+    </ShadowView>
   );
 };
 
@@ -77,15 +69,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 16,
     padding: 16,
-    borderWidth: 1,
-    shadowRadius: 3,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 1,
-    borderRadius: 8,
-    elevation: 1,
     width: '90%',
   },
   imageTitleContainer: {
