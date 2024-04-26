@@ -8,8 +8,6 @@ import { useEffect } from 'react';
 import { useColorScheme } from '@/components/useColorScheme';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useTranslation } from '@/hooks/useTranslation';
-import { getBackgroundColor } from '@/utils/color';
-import { useThemeColor } from '@/components/Themed';
 import Colors from '@/constants/Colors';
 
 export {
