@@ -7,16 +7,13 @@ import { useFocusEffect } from 'expo-router';
 import { useHistoryStore } from '@/storage/historyStore';
 
 export default function HistoryScreen() {
-  // TODO: Would it make sense to use something like swr for the async data fetching from the device?
-  // TODO: Read from history and render data here
   const { history, fetchHistory } = useHistoryStore();
 
   // Fetch history when the screen is focused
   useFocusEffect(
     useCallback(() => {
-      // No need for an isActive flag, Zustand will handle unsubscriptions automatically
       fetchHistory();
-    }, [fetchHistory]) // fetchHistory is stable and won't change, so it's safe to add as a dependency
+    }, [fetchHistory])
   );
 
   if (!history) return null;
