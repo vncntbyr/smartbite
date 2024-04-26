@@ -16,7 +16,9 @@ export default function InfoModal() {
       <Text>{t('infoModal.contributionText')}</Text>
       <Text>
         {t('infoModal.furtherInformation')}{' '}
-        <ExternalLink style={styles.link} href={'https://de.openfoodfacts.org/'}>
+        <ExternalLink
+          href={'https://de.openfoodfacts.org/'}
+        >
           {t('infoModal.externalLink')}
         </ExternalLink>
       </Text>
@@ -40,9 +42,5 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: '80%',
-  },
-  link: {
-    color: 'blue',
-    textDecorationLine: 'underline',
   },
 });

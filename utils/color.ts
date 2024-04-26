@@ -12,3 +12,8 @@ export const getShadowColor = (color: keyof ColorType) => {
 export const getIconColor = (color: keyof ColorType) => {
   return useColorScheme() === 'light' ? Colors[color]['900'] : Colors[color]['100'];
 };
+
+export const getLinkColor = () => {
+  return useColorScheme() === 'light' ? Colors['blue']['600'] : Colors['blue']['400'];
+};
+
