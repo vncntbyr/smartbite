@@ -1,10 +1,7 @@
-import { VeganIcon } from '@/icons/VeganIcon';
-import { VegetarianIcon } from '@/icons/VegetarianIcon';
 import { StyleSheet } from 'react-native';
 import { View, Text } from '@/components/Themed';
-import { MeatIcon } from '@/icons/MeatIcon';
-import { NonVeganIcon } from '@/icons/NonVeganIcon';
 import { Bar } from './Bar';
+import { icons } from '@/constants/Icons';
 
 type IngredientItemProps = {
   ingredientName: string;
@@ -21,12 +18,8 @@ export function IngredientItem({
     <Bar>
       <Text style={styles.ingredientTitle}>{ingredientName}</Text>
       <View style={styles.iconContainer}>
-        {isVegan ? <VeganIcon width={32} height={32} /> : <NonVeganIcon width={32} height={32} />}
-        {isVegetarian ? (
-          <VegetarianIcon width={32} height={32} />
-        ) : (
-          <MeatIcon width={32} height={32} />
-        )}
+        {isVegan ? icons.veganIcon : icons.nonVeganIcon}
+        {isVegetarian ? icons.vegetarianIcon : icons.meatIcon}
       </View>
     </Bar>
   );

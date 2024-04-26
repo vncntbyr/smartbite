@@ -7,6 +7,8 @@ import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useHistoryStore } from '@/storage/historyStore';
+import { InfoIcon } from '@/constants/icons/InfoIcon';
+import { TrashIcon } from '@/constants/icons/TrashIcon';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -35,14 +37,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="history" color={color} />,
           headerRight: () => (
             <Pressable onPress={() => clearHistory()}>
-              {({ pressed }) => (
-                <FontAwesome
-                  name="trash"
-                  size={25}
-                  color={Colors[colorScheme ?? 'light'].text}
-                  style={{ marginRight: 20, opacity: pressed ? 0.5 : 1 }}
-                />
-              )}
+              {({ pressed }) => <TrashIcon pressed={pressed} />}
             </Pressable>
           ),
         }}
@@ -54,16 +49,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon name="camera" color={color} />,
           headerRight: () => (
             <Link href="/InfoModal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 20, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
+              <Pressable>{({ pressed }) => <InfoIcon pressed={pressed} />}</Pressable>
             </Link>
           ),
         }}
