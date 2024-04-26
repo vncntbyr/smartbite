@@ -33,10 +33,10 @@ export default function HistoryScreen() {
             if (typeof section.timestamp === 'string') {
               const date = new Date(section.timestamp);
               const day = date.getDate();
-              const month = date.getMonth();
+              const month = date.getMonth() + 1;
               const year = date.getFullYear();
               return (
-                <Text>
+                <Text style={styles.sectionTitle}>
                   {day}.{month}.{year}
                 </Text>
               );
@@ -47,20 +47,6 @@ export default function HistoryScreen() {
           style={styles.ingredientList}
           showsVerticalScrollIndicator={false}
         />
-        {/*    <BarList
-          data={history}
-          renderItem={({ item }): JSX.Element => {
-            const { barcode, name, timestamp, thumbnailUrl } = item;
-            return (
-              <HistoryItem
-                barcode={barcode}
-                name={name}
-                timestamp={timestamp}
-                thumbnailUrl={thumbnailUrl}
-              />
-            );
-          }}
-        /> */}
       </View>
     </View>
   );
@@ -80,5 +66,9 @@ const styles = StyleSheet.create({
   },
   ingredientList: {
     width: '100%',
+  },
+  sectionTitle: {
+    fontSize: 18,
+    paddingVertical: 2,
   },
 });
