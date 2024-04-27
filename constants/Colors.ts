@@ -1,6 +1,3 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
-
 export type ColorType = {
   green: Record<string, string>;
   red: Record<string, string>;
@@ -90,6 +87,9 @@ export const Colors: ColorType = {
     900: '#000000',
   },
 };
+
+const tintColorLight = Colors.blue[500];
+const tintColorDark = '#fff';
 
 export default {
   light: {
