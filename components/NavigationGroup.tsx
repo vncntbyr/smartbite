@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { View } from './Themed';
 import type { PropsWithChildren } from 'react';
 import { ShadowView } from './ShadowView';
-import { getShadowColor } from '@/utils/color';
+import { getShadowBorderColor } from '@/utils/color';
 
 export const NavigationGroup = ({ children }: PropsWithChildren): JSX.Element => {
   const childrenArray = Children.toArray(children);
@@ -15,7 +15,7 @@ export const NavigationGroup = ({ children }: PropsWithChildren): JSX.Element =>
         child,
         <View
           key={`separator-${index}`}
-          style={[styles.separator, { backgroundColor: getShadowColor('gray') }]}
+          style={[styles.separator, { backgroundColor: getShadowBorderColor('black') }]}
         />,
       ];
     }
