@@ -57,6 +57,14 @@ function RootLayoutNav() {
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
+            name="barcode/[slug]"
+            options={{
+              headerShown: true,
+              title: t('navigation.barcodeTitle'),
+              headerBackTitle: t('navigation.back'),
+            }}
+          />
+          <Stack.Screen
             name="InfoModal"
             options={{
               presentation: 'modal',
