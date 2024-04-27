@@ -1,6 +1,6 @@
 import { getShadowColor } from '@/utils/color';
 import type { PropsWithChildren } from 'react';
-import { StyleSheet, type ViewStyle } from 'react-native';
+import { Platform, StyleSheet, type ViewStyle } from 'react-native';
 import { View } from './Themed';
 
 type ShadowViewProps = PropsWithChildren<{
@@ -14,8 +14,7 @@ export const ShadowView = ({ children, style }: ShadowViewProps): JSX.Element =>
         styles.shadowStyle,
         style,
         {
-          borderColor: getShadowColor('gray'),
-          shadowColor: getShadowColor('gray'),
+          ...(Platform.OS === 'android' && { shadowColor: getShadowColor('black') }),
         },
       ]}
     >
@@ -28,11 +27,11 @@ const styles = StyleSheet.create({
   shadowStyle: {
     shadowOffset: {
       width: 0,
-      height: 0,
+      height: 1,
     },
-    shadowRadius: 2,
-    shadowOpacity: 1,
+    shadowRadius: 3,
+    shadowOpacity: 0.2,
     borderRadius: 8,
-    borderWidth: 0.5,
+    elevation: 5,
   },
 });
