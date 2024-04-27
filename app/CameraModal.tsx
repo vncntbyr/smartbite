@@ -4,7 +4,7 @@ import { CameraType, Camera, type BarCodeScanningResult, FlashMode, AutoFocus } 
 import { useCameraPermissions } from 'expo-camera/next';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { Gesture, GestureDetector, TapGestureHandler } from 'react-native-gesture-handler';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useAutofocus } from '@/hooks/useAutofocus';
 
@@ -76,8 +76,6 @@ export default function CameraModalScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   camera: {
     flex: 1,
