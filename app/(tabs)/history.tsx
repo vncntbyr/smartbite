@@ -1,10 +1,31 @@
-import { SectionList, StyleSheet } from 'react-native';
+import { Platform, SectionList, StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 import { useCallback } from 'react';
 import { HistoryItem } from '@/components/HistoryItem';
 import { useFocusEffect } from 'expo-router';
 import { useHistoryStore } from '@/storage/historyStore';
+
+const ListEmptyComponent = (): JSX.Element => {
+  // The transform is required because the list inversion causes the text to be mirrored horizontally
+  // Android additionally mirrors the text vertically (for whatever devilish reason)
+  return (
+    <View
+      style={[
+        styles.container,
+        {
+          transform: [
+            { rotateX: '180deg' },
+            { rotateY: `${Platform.OS === 'android' ? '180deg' : '0deg'}` },
+          ],
+          justifyContent: 'center',
+        },
+      ]}
+    >
+      <Text>No history available</Text>
+    </View>
+  );
+};
 
 export default function HistoryScreen() {
   const { history, fetchHistory } = useHistoryStore();
@@ -16,7 +37,6 @@ export default function HistoryScreen() {
     }, [fetchHistory])
   );
 
-  if (!history) return null;
   return (
     <View style={styles.container}>
       <View style={styles.listContainer}>
@@ -26,7 +46,7 @@ export default function HistoryScreen() {
             const { barcode, name, thumbnailUrl } = item;
             return <HistoryItem barcode={barcode} name={name} thumbnailUrl={thumbnailUrl} />;
           }}
-          renderSectionHeader={({ section }): JSX.Element => {
+          renderSectionFooter={({ section }): JSX.Element => {
             if (typeof section.timestamp === 'string') {
               const date = new Date(section.timestamp);
               const day = date.getDate();
@@ -43,6 +63,9 @@ export default function HistoryScreen() {
           contentContainerStyle={styles.ingredientContentContainer}
           style={styles.ingredientList}
           showsVerticalScrollIndicator={false}
+          ListEmptyComponent={ListEmptyComponent}
+          stickySectionHeadersEnabled={false}
+          inverted
         />
       </View>
     </View>
