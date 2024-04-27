@@ -17,9 +17,11 @@ import { BarList } from '@/components/BarList';
 import type { ProductData } from '@/types/ProductData';
 import { NoBarcodeScanned } from '@/components/NoBarcodeScanned';
 import { CameraButton } from '@/components/CameraButton';
+import { useProductStore } from '@/storage/productData';
 
 export default function TabOneScreen() {
   const [productData, setProductData] = useState<ProductData | undefined>();
+  const { setActiveProduct } = useProductStore();
   // const { barcode } = useBarcodeStore();
   // Studentenfutter 4008258154229, Nudelsuppe 737628064502, Salami 20036362, lasagna 4388860553840, hefeweizen 4066600641964, radler 4043800017713
   const barcode = '20036362';
@@ -27,13 +29,15 @@ export default function TabOneScreen() {
   const fetchData = useCallback(async (barcode: string) => {
     const result = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}.json`);
     const foodData = await result.json();
-    setProductData({
+    const productData = {
       ingredients: getIngredients(foodData),
       imgUrl: getImgUrl(foodData).normal,
       nutrients: getNutrients(foodData),
       productName: foodData.product.product_name,
       scores: getScores(foodData),
-    });
+    };
+    setActiveProduct(productData);
+    setProductData(productData);
     addToHistory(getHistoryData(foodData));
   }, []);
 
