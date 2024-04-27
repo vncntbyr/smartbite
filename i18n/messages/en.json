@@ -10,12 +10,16 @@
   },
   "bottomTabNavigation": {
     "history": "History",
-    "scan": "Scan Products",
+    "scan": "Scan",
     "about": "About"
   },
   "scores": {
     "processedGrade": "Processed",
     "nutrition": "Nutrition",
     "plantGrade": "Plant Grade"
+  },
+  "scanner": {
+    "description": "Scan your first product to inform yourself about ingredients and quality.",
+    "button": "Open Scanner"
   }
 }

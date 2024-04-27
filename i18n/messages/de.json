@@ -10,12 +10,16 @@
   },
   "bottomTabNavigation": {
     "history": "Verlauf",
-    "scan": "Scannen",
+    "scan": "Scanner",
     "about": "Über uns"
   },
   "scores": {
     "processedGrade": "Verarbeitung",
     "nutrition": "Nährwert",
     "plantGrade": "Pflanzenbasis"
+  },
+  "scanner": {
+    "description": "Scanne dein erstes Produkt, um dich über Inhaltsstofe und Qualität zu informieren.",
+    "button": "Scanner öffnen"
   }
 }
