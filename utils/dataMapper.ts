@@ -79,14 +79,12 @@ const mapNutriGradeToScore = (nutriScore: string): number => {
 };
 
 const getPlantScore = (ingredients: any): number => {
-  const veganIngredients = ingredients.some((ingredient: any) => ingredient.vegan === 'yes')
-    ? 0
-    : 2;
+  const veganIngredients = ingredients.some((ingredient: any) => ingredient.vegan === 'no') ? 2 : 0;
   const vegetarianIngredients = ingredients.some(
-    (ingredient: any) => ingredient.vegetarian === 'yes'
+    (ingredient: any) => ingredient.vegetarian === 'no'
   )
-    ? 0
-    : 2;
+    ? 2
+    : 0;
   const potentiallyVegetarianIngredients = ingredients.some(
     (ingredient: any) => ingredient.vegetarian === 'maybe'
   )
@@ -97,6 +95,7 @@ const getPlantScore = (ingredients: any): number => {
   )
     ? 1
     : 0;
+
   return (
     veganIngredients +
     vegetarianIngredients +
