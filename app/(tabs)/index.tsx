@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { Link } from 'expo-router';
@@ -12,37 +12,45 @@ import {
 } from '@/utils/dataMapper';
 import { ProductOverview } from '@/components/ProductOverview';
 import { IngredientItem } from '@/components/IngredientItem';
-import type { Scores } from '@/types/Scores';
 import type { Ingredient } from '@/types/Ingredient';
 import { getBackgroundColor } from '@/utils/color';
 import { addToHistory } from '@/storage/store';
 import { BarList } from '@/components/BarList';
+import type { ProductData } from '@/types/ProductData';
+
+const initialData = {
+  ingredients: [],
+  imgUrl: '',
+  nutrients: {},
+  productName: '',
+  scores: undefined,
+};
 
 export default function TabOneScreen() {
-  const [ingredients, setIngredients] = useState<Ingredient[]>();
-  const [imgUrl, setImgUrl] = useState<string>(''); // TODO: handle what happens when there is no image url
-  const [nutrients, setNutrients] = useState<Record<string, number>>({}); // TODO: handle what happens when there is no image url
-  const [productName, setProductName] = useState<string>(''); // TODO: handle what happens when there is no image url
-  const [scores, setScores] = useState<Scores>(); // TODO: handle what happens when there is no image url
-  // const { barcode } = useBarcodeStore();
-  // Studentenfutter 4008258154229, Nudelsuppe 737628064502, Salami 20036362
-  const barcode = '20036362';
+  const [productData, setProductData] = useState<ProductData>(initialData);
+  const { barcode } = useBarcodeStore();
+  // Studentenfutter 4008258154229, Nudelsuppe 737628064502, Salami 20036362, lasagna 4388860553840, hefeweizen 4066600641964, radler 4043800017713
+  // const barcode = '20036362';
+
+  const fetchData = useCallback(async (barcode: string) => {
+    const result = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}.json`);
+    const foodData = await result.json();
+    setProductData({
+      ingredients: getIngredients(foodData),
+      imgUrl: getImgUrl(foodData).normal,
+      nutrients: getNutrients(foodData),
+      productName: foodData.product.product_name,
+      scores: getScores(foodData),
+    });
+    addToHistory(getHistoryData(foodData));
+  }, []);
+
   useEffect(() => {
     if (!barcode) return;
-    const getFoodData = async () => {
-      const result = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}.json`);
-      const foodData = await result.json();
-      // TODO: compress to one function which returns an object containing all the data
-      setIngredients(getIngredients(foodData));
-      setProductName(foodData.product.product_name);
-      setImgUrl(getImgUrl(foodData).normal);
-      setNutrients(getNutrients(foodData));
-      setScores(getScores(foodData));
-      addToHistory(getHistoryData(foodData));
-      // add to history
-    };
-    getFoodData();
-  }, [barcode]);
+    fetchData(barcode);
+  }, [barcode, fetchData]);
+
+  const { ingredients, imgUrl, nutrients, productName, scores } = productData;
 
   return (
     <View style={styles.container}>
