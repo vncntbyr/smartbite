@@ -13,6 +13,10 @@
     "scan": "Scanner",
     "about": "Über uns"
   },
+  "navigation": {
+    "back": "Zurück",
+    "barcodeTitle": "Produktinformationen"
+  },
   "scores": {
     "processedGrade": "Verarbeitung",
     "nutrition": "Nährwert",

@@ -13,6 +13,10 @@
     "scan": "Scan",
     "about": "About"
   },
+  "navigation": {
+    "back": "Back",
+    "barcodeTitle": "Product Information"
+  },
   "scores": {
     "processedGrade": "Processed",
     "nutrition": "Nutrition",
