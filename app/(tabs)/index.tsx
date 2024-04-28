@@ -1,50 +1,33 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
 import { useBarcodeStore } from '@/hooks/useBarcodeStore';
-import {
-  getHistoryData,
-  getImgUrl,
-  getIngredients,
-  getNutrients,
-  getScores,
-} from '@/utils/dataMapper';
+import { getHistoryData } from '@/utils/dataMapper';
+import useSWR from 'swr';
 import { ProductOverview } from '@/components/ProductOverview';
 import { IngredientItem } from '@/components/IngredientItem';
 import type { Ingredient } from '@/types/Ingredient';
 import { addToHistory } from '@/storage/store';
 import { BarList } from '@/components/BarList';
-import type { ProductData } from '@/types/ProductData';
 import { NoBarcodeScanned } from '@/components/NoBarcodeScanned';
 import { CameraButton } from '@/components/CameraButton';
 import { useProductStore } from '@/storage/productData';
+import { fetchProductData } from '@/utils/network';
+import { ScanPageSkeleton } from '@/components/Skeletons/ScanPageSkeleton';
 
 export default function TabOneScreen() {
-  const [productData, setProductData] = useState<ProductData | undefined>();
   const { setActiveProduct } = useProductStore();
   // const { barcode } = useBarcodeStore();
-  // Studentenfutter 4008258154229, Nudelsuppe 737628064502, Salami 20036362, lasagna 4388860553840, hefeweizen 4066600641964, radler 4043800017713
-  const barcode = '20036362';
-
-  const fetchData = useCallback(async (barcode: string) => {
-    const result = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}.json`);
-    const foodData = await result.json();
-    const productData = {
-      ingredients: getIngredients(foodData),
-      imgUrl: getImgUrl(foodData).normal,
-      nutrients: getNutrients(foodData),
-      productName: foodData.product.product_name,
-      scores: getScores(foodData),
-    };
-    setActiveProduct(productData);
-    setProductData(productData);
-    addToHistory(getHistoryData(foodData));
-  }, []);
+  // Studentenfutter 4008258154229, Nudelsuppe 737628064502, Salami 20036362, lasagna 4388860553840, hefeweizen 4066600641964, radler 4043800017713, Erdnussbutter 4055732632001
+  const barcode = '4055732632001';
+  const { data: productData, isLoading, error } = useSWR(barcode, fetchProductData);
 
   useEffect(() => {
-    if (!barcode) return;
-    fetchData(barcode);
-  }, [barcode, fetchData]);
+    setActiveProduct(productData);
+    addToHistory(getHistoryData(productData));
+  }, [productData]);
+
+  if (isLoading) return <ScanPageSkeleton />;
 
   if (!productData) return <NoBarcodeScanned />;
 
