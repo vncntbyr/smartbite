@@ -8,6 +8,9 @@ export const getAllergens = (data: any): any => {
   return data.product['allergens_from_ingredients'];
 };
 
+// TODO: refactor to maybe now give an array of plain ingredients back due to nesting in ingredients
+// (e.g. ingredients can have spices(cumin, salt, etc.) which now are displayed without the "heading" and this can lead to weird results (e.g Sojaöl (ganz gehärtet) only displays "Sojaöl"))
+// -> maybe use SectionList?
 export const getIngredients = (data: any): Ingredient[] => {
   const extractIngredients = (ingredients: any[]): Ingredient[] => {
     const removeUnderscores = (ingredient: string) => {
