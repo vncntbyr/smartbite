@@ -13,9 +13,9 @@ import { NoBarcodeScanned } from '@/components/NoBarcodeScanned';
 import { CameraButton } from '@/components/CameraButton';
 import { useProductStore } from '@/storage/productData';
 import { fetchProductData } from '@/utils/network';
-import { ScanPageSkeleton } from '@/components/Skeletons/ScanPageSkeleton';
+import { OverviewScreenSkeleton } from '@/components/Skeletons/OverviewScreenSkeleton';
 
-export default function TabOneScreen() {
+export default function OverviewScreen() {
   const { setActiveProduct } = useProductStore();
   // const { barcode } = useBarcodeStore();
   // Studentenfutter 4008258154229, Nudelsuppe 737628064502, Salami 20036362, lasagna 4388860553840, hefeweizen 4066600641964, radler 4043800017713, Erdnussbutter 4055732632001
@@ -27,7 +27,7 @@ export default function TabOneScreen() {
     addToHistory(getHistoryData(productData));
   }, [productData]);
 
-  if (isLoading) return <ScanPageSkeleton />;
+  if (isLoading) return <OverviewScreenSkeleton />;
 
   if (!productData) return <NoBarcodeScanned />;
 

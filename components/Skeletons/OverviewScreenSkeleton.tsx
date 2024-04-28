@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { Text } from '@/components/Themed';
 import Skeleton from '@/components/Skeleton';
 
-export function ScanPageSkeleton() {
+export function OverviewScreenSkeleton() {
   return (
     <View style={styles.container}>
       <Skeleton width={'90%'} flex={1} marginTop={16} />
