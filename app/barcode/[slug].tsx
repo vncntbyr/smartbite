@@ -4,6 +4,8 @@ import { useProductStore } from '@/storage/productData';
 import { StyleSheet } from 'react-native';
 
 export default function Page() {
+  // TODO: dont get the active product because the active product != the product that was clicked in history screen
+  // TODO: maybe refetch product data here but check whether activeProduct.barcode === our url barcode to save data?
   const { activeProduct } = useProductStore();
   if (!activeProduct) return <Text>Something went wrong...</Text>;
   const { imgUrl, productName, nutrients, scores } = activeProduct;
