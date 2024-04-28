@@ -3,7 +3,7 @@ import type { ProductData } from '@/types/ProductData';
 
 type ProductStore = {
   activeProduct: ProductData | undefined;
-  setActiveProduct: (productData: ProductData) => Promise<void>;
+  setActiveProduct: (productData: ProductData | undefined) => Promise<void>;
   resetActiveProduct: () => Promise<void>;
 };
 

@@ -32,8 +32,9 @@ export const clearHistory = async (): Promise<void> => {
 };
 
 // This is hell, I want to refactor it badly but at the same time I don't want to touch it
-export const addToHistory = async (value: HistoryData): Promise<void> => {
+export const addToHistory = async (value: HistoryData | undefined): Promise<void> => {
   try {
+    if (!value) return;
     const currentHistory = (await readHistory()) || [];
     let currentDate = new Date().setHours(0, 0, 0, 0); // Set time to midnight for comparison
     // currentDate = new Date(currentDate).setDate(new Date(currentDate).getDate() + 6); //TODO: can be used for testing -> find better way
