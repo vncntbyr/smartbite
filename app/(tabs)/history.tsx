@@ -1,4 +1,4 @@
-import { Platform, SectionList, StyleSheet } from 'react-native';
+import { SectionList, StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 import { useCallback } from 'react';
