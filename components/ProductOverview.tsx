@@ -33,13 +33,7 @@ export const ProductOverview = ({
   return (
     <ShadowView style={styles.overviewContainer}>
       <View style={styles.imageTitleContainer}>
-        <Image
-          style={styles.image}
-          source={imgUrl}
-          placeholder={blurhash}
-          contentFit="cover"
-          transition={1000}
-        />
+        <Image style={styles.image} source={imgUrl} placeholder={blurhash} contentFit="cover" />
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{productName}</Text>
           <Text>
