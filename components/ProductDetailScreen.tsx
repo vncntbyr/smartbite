@@ -20,7 +20,9 @@ type ProductDetailScreenProps = {
 };
 
 export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreenProps) => {
+  // TODO: Do we need this information anywhere?
   const { setActiveProduct } = useProductStore();
+  // We don't need additional state management due to SWR's smart caching per barcode. ( A map is created, which stores the data per barcode.)
   const { data: productData, isLoading, error } = useSWR(barcode, fetchProductData);
 
   useEffect(() => {
@@ -33,6 +35,7 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
 
   if (isLoading) return <OverviewScreenSkeleton />;
 
+  // TODO: implement cool error screen.
   if (!productData || error) return <Text>Something went wrong...</Text>;
 
   const { ingredients, imgUrl, nutrients, productName, scores } = productData;
