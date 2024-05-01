@@ -3,17 +3,17 @@ import { View, Text } from '@/components/Themed';
 import { Bar } from './Bar';
 import { icons } from '@/constants/Icons';
 
-type IngredientItemProps = {
+type IngredientBarProps = {
   ingredientName: string;
   isVegan: boolean;
   isVegetarian: boolean;
 };
 
-export function IngredientItem({
+export function IngredientBar({
   ingredientName,
   isVegan = false,
   isVegetarian = false,
-}: IngredientItemProps): JSX.Element {
+}: IngredientBarProps): JSX.Element {
   return (
     <Bar>
       <Text style={styles.ingredientTitle}>{ingredientName}</Text>
