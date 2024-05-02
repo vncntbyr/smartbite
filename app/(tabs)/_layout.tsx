@@ -1,10 +1,9 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { Pressable, useColorScheme } from 'react-native';
 
 import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useHistoryStore } from '@/storage/historyStore';
 import { InfoIcon } from '@/constants/icons/InfoIcon';

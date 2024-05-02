@@ -5,10 +5,10 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 
-import { useColorScheme } from '@/components/useColorScheme';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useTranslation } from '@/hooks/useTranslation';
 import Colors from '@/constants/Colors';
+import { useColorScheme } from 'react-native';
 
 export {
   // Catch any errors thrown by the Layout component.
