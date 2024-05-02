@@ -18,8 +18,8 @@
     "barcodeTitle": "Product Information"
   },
   "scores": {
-    "processedGrade": "Processed",
-    "nutrition": "Nutrition",
+    "processedGrade": "NOVA",
+    "nutrition": "Nutri",
     "plantGrade": "Plant Grade"
   },
   "scanner": {

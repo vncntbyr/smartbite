@@ -18,8 +18,8 @@
     "barcodeTitle": "Produktinformationen"
   },
   "scores": {
-    "processedGrade": "Verarbeitung",
-    "nutrition": "Nährwert",
+    "processedGrade": "NOVA",
+    "nutrition": "Nutri",
     "plantGrade": "Pflanzenbasis"
   },
   "scanner": {
