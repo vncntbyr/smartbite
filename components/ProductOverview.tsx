@@ -17,7 +17,7 @@ type ProductOverviewProps = {
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
-// TODO: Images are not displayed well at the moment (bottles are cut off) -> think of improvement
+// TODO: Images can be really small -> maybe implement modal with large image on click.
 // TODO: Sometimes there is no nutrition score data -> handle this case
 // TODO: kcals are also not always present -> handle this case
 export const ProductOverview = ({
@@ -33,7 +33,7 @@ export const ProductOverview = ({
   return (
     <ShadowView style={styles.overviewContainer}>
       <View style={styles.imageTitleContainer}>
-        <Image style={styles.image} source={imgUrl} placeholder={blurhash} contentFit="cover" />
+        <Image style={styles.image} source={imgUrl} placeholder={blurhash} contentFit="contain" />
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{productName}</Text>
           <Text>
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     maxWidth: 96,
     minHeight: 96,
     maxHeight: 96,
-    backgroundColor: 'gray',
     borderRadius: 8,
   },
   titleContainer: {
