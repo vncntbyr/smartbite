@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { View, Text } from '@/components/Themed';
-import { Bar } from './Bar';
+import { View, Text } from '@/components/atoms/Themed';
+import { Bar } from '../atoms/Bar';
 import type { HistoryData } from '@/types/History';
 import { Image } from 'expo-image';
 import { BarcodeLinkWrapper } from './BarcodeLinkWrapper';

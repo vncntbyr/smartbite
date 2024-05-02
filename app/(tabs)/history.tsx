@@ -1,11 +1,11 @@
 import { SectionList, StyleSheet } from 'react-native';
 
-import { Text, View } from '@/components/Themed';
+import { Text, View } from '@/components/atoms/Themed';
 import { useCallback } from 'react';
-import { HistoryItem } from '@/components/HistoryItem';
+import { HistoryItem } from '@/components/history/HistoryItem';
 import { useFocusEffect } from 'expo-router';
 import { useHistoryStore } from '@/storage/historyStore';
-import { ListEmptyComponent } from '@/components/EmptyHistory';
+import { ListEmptyComponent } from '@/components/history/EmptyHistory';
 
 export default function HistoryScreen() {
   const { history, fetchHistory } = useHistoryStore();

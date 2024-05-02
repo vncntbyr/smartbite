@@ -1,4 +1,4 @@
-import { ProductDetailScreen } from '@/components/ProductDetailScreen';
+import { ProductDetailScreen } from '@/components/screens/ProductDetailScreen';
 import { useLocalSearchParams } from 'expo-router';
 import { StyleSheet } from 'react-native';
 

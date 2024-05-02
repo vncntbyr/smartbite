@@ -1,8 +1,8 @@
 import { Children } from 'react';
 import { StyleSheet } from 'react-native';
-import { View } from './Themed';
+import { View } from '../atoms/Themed';
 import type { PropsWithChildren } from 'react';
-import { ShadowView } from './ShadowView';
+import { ShadowView } from '../atoms/ShadowView';
 import { getShadowBorderColor } from '@/utils/color';
 
 export const NavigationGroup = ({ children }: PropsWithChildren): JSX.Element => {

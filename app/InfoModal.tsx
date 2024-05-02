@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
 
-import { Text, View } from '@/components/Themed';
-import { ExternalLink } from '@/components/ExternalLink';
+import { Text, View } from '@/components/atoms/Themed';
+import { ExternalLink } from '@/components/atoms/ExternalLink';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export default function InfoModal() {
@@ -16,9 +16,7 @@ export default function InfoModal() {
       <Text>{t('infoModal.contributionText')}</Text>
       <Text>
         {t('infoModal.furtherInformation')}{' '}
-        <ExternalLink
-          href={'https://de.openfoodfacts.org/'}
-        >
+        <ExternalLink href={'https://de.openfoodfacts.org/'}>
           {t('infoModal.externalLink')}
         </ExternalLink>
       </Text>

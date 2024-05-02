@@ -1,5 +1,5 @@
 import { Platform, StyleSheet } from 'react-native';
-import { View, Text } from './Themed';
+import { View, Text } from '../atoms/Themed';
 
 export const ListEmptyComponent = (): JSX.Element => {
   // The transform is required because the list inversion causes the text to be mirrored horizontally

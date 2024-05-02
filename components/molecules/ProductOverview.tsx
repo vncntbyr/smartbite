@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
-import { View, Text } from '@/components/Themed';
+import { View, Text } from '@/components/atoms/Themed';
 import { ScoreDisplay } from './ScoreDisplay';
 import { useTranslation } from '@/hooks/useTranslation';
-import { ShadowView } from './ShadowView';
+import { ShadowView } from '../atoms/ShadowView';
 
 type ProductOverviewProps = {
   imgUrl: string;

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { View, Text } from './Themed';
+import { View, Text } from '../atoms/Themed';
 import { useTranslation } from '@/hooks/useTranslation';
-import { CameraButton } from './CameraButton';
+import { CameraButton } from '../atoms/CameraButton';
 
 export function NoBarcodeScanned() {
   const t = useTranslation();

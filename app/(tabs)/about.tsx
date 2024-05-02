@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { Text, View } from '@/components/Themed';
+import { Text, View } from '@/components/atoms/Themed';
 
 export default function AboutScreen() {
   return (

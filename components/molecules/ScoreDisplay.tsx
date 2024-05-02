@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { View, Text } from '@/components/Themed';
+import { View, Text } from '@/components/atoms/Themed';
 import { getBackgroundColor } from '@/utils/color';
 
 export type ScoreDisplayProps = {
@@ -9,7 +9,7 @@ export type ScoreDisplayProps = {
 
 export const ScoreDisplay = ({ score, scoreTitle }: ScoreDisplayProps) => {
   const calculateBackgroundColor = () => {
-    if (score === 0) return getBackgroundColor('green');
+    if (score <= 1) return getBackgroundColor('green');
     if (score <= 2) return getBackgroundColor('yellow');
     if (score <= 3) return getBackgroundColor('orange');
     return getBackgroundColor('red');

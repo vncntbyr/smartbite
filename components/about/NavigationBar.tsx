@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { View, Text } from './Themed';
+import { View, Text } from '../atoms/Themed';
 import { Feather } from '@expo/vector-icons';
 import type { PropsWithChildren } from 'react';
 

@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
-import { Text } from '@/components/Themed';
-import Skeleton from '@/components/Skeleton';
+import { Text } from '@/components/atoms/Themed';
+import Skeleton from '@/components/atoms/Skeleton';
 
 export function OverviewScreenSkeleton() {
   return (

@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
 import type { Ingredient } from '@/types/Ingredient';
-import { BarList } from './BarList';
-import { CameraButton } from './CameraButton';
-import { IngredientBar } from './IngredientBar';
-import { ProductOverview } from './ProductOverview';
-import { View, Text } from './Themed';
+import { BarList } from '../atoms/BarList';
+import { CameraButton } from '../atoms/CameraButton';
+import { IngredientBar } from '../molecules/IngredientBar';
+import { ProductOverview } from '../molecules/ProductOverview';
+import { View, Text } from '../atoms/Themed';
 import { addToHistory } from '@/storage/store';
 import { getHistoryData } from '@/utils/dataMapper';
 import { fetchProductData } from '@/utils/network';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 import { NoBarcodeScanned } from './NoBarcodeScanned';
-import { OverviewScreenSkeleton } from './Skeletons/OverviewScreenSkeleton';
+import { OverviewScreenSkeleton } from '../skeletons/OverviewScreenSkeleton';
 import { useProductStore } from '@/storage/productData';
 
 type ProductDetailScreenProps = {
