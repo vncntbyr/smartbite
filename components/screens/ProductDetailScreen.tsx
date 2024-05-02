@@ -24,7 +24,6 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
   const { setActiveProduct } = useProductStore();
   // We don't need additional state management due to SWR's smart caching per barcode. ( A map is created, which stores the data per barcode.)
   const { data: productData, isLoading, error } = useSWR(barcode, fetchProductData);
-
   useEffect(() => {
     if (!isScanPage) return;
     setActiveProduct(productData);

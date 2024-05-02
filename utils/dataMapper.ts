@@ -65,61 +65,6 @@ export const getNutrients = (data: any): any => {
   };
 };
 
-const mapNutriGradeToScore = (nutriScore: string): number => {
-  switch (nutriScore) {
-    case 'a':
-      return 0;
-    case 'b':
-      return 1;
-    case 'c':
-      return 2;
-    case 'd':
-      return 3;
-    case 'e':
-      return 4;
-    default:
-      return 5;
-  }
-};
-
-const getPlantScore = (ingredients: any): number => {
-  const veganIngredients = ingredients.some((ingredient: any) => ingredient.vegan === 'no') ? 2 : 0;
-  const vegetarianIngredients = ingredients.some(
-    (ingredient: any) => ingredient.vegetarian === 'no'
-  )
-    ? 2
-    : 0;
-  const potentiallyVegetarianIngredients = ingredients.some(
-    (ingredient: any) => ingredient.vegetarian === 'maybe'
-  )
-    ? 1
-    : 0;
-  const potentiallyVeganIngredients = ingredients.some(
-    (ingredient: any) => ingredient.vegan === 'maybe'
-  )
-    ? 1
-    : 0;
-
-  return (
-    veganIngredients +
-    vegetarianIngredients +
-    potentiallyVegetarianIngredients +
-    potentiallyVeganIngredients
-  );
-};
-
-export const getScores = (data: any): Scores => {
-  const novaScore = data.product.nova_group;
-  const { grade, negative_points, positive_points, score } = data.product.nutriscore_data;
-  return {
-    novaScore,
-    nutriScore: mapNutriGradeToScore(grade),
-    negativePoints: negative_points,
-    positivePoints: positive_points,
-    plantScore: getPlantScore(data.product.ingredients),
-  };
-};
-
 export const getHistoryData = (data: ProductData | undefined): HistoryData | undefined => {
   if (!data) return;
   const { barcode, productName, thumbnailUrl } = data;

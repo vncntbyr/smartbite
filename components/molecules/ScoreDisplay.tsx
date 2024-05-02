@@ -1,22 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, type ViewStyle } from 'react-native';
 import { View, Text } from '@/components/atoms/Themed';
-import { getBackgroundColor } from '@/utils/color';
 
 export type ScoreDisplayProps = {
-  score: number;
+  score: string | number;
+  color: ViewStyle['backgroundColor'];
   scoreTitle: string;
 };
 
-export const ScoreDisplay = ({ score, scoreTitle }: ScoreDisplayProps) => {
-  const calculateBackgroundColor = () => {
-    if (score <= 1) return getBackgroundColor('green');
-    if (score <= 2) return getBackgroundColor('yellow');
-    if (score <= 3) return getBackgroundColor('orange');
-    return getBackgroundColor('red');
-  };
+export const ScoreDisplay = ({ score, color, scoreTitle }: ScoreDisplayProps) => {
   return (
     <View style={styles.container}>
-      <View style={[styles.scoreContainer, { backgroundColor: calculateBackgroundColor() }]}>
+      <View style={[styles.scoreContainer, { backgroundColor: color }]}>
         <Text style={styles.score}>{score}</Text>
       </View>
       <Text>{scoreTitle}</Text>
@@ -35,7 +29,6 @@ const styles = StyleSheet.create({
     height: 48,
     width: 48,
     borderRadius: 24,
-    backgroundColor: 'lightgray',
     alignItems: 'center',
     justifyContent: 'center',
   },

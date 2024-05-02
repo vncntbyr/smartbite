@@ -1,5 +1,6 @@
 import type { ProductData } from '@/types/ProductData';
-import { getImgUrl, getIngredients, getNutrients, getScores } from './dataMapper';
+import { getImgUrl, getIngredients, getNutrients } from './dataMapper';
+import { getScores } from './scores';
 
 export const fetchProductData = async (barcode: string): Promise<ProductData> => {
   if (!barcode) return Promise.reject('No barcode provided');

@@ -4,14 +4,16 @@ import { View, Text } from '@/components/atoms/Themed';
 import { ScoreDisplay } from './ScoreDisplay';
 import { useTranslation } from '@/hooks/useTranslation';
 import { ShadowView } from '../atoms/ShadowView';
+import type { NovaScore, NutriScore, PlantScore } from '@/types/Scores';
+import { getBackgroundColor } from '@/utils/color';
 
 type ProductOverviewProps = {
   imgUrl: string;
   productName: string;
   nutrients: Record<string, number>;
-  nutriScore?: number;
-  novaScore?: number;
-  plantScore?: number;
+  nutriScore?: NutriScore;
+  novaScore?: NovaScore;
+  plantScore?: PlantScore;
 };
 
 const blurhash =
@@ -42,14 +44,26 @@ export const ProductOverview = ({
         </View>
       </View>
       <View style={styles.scoreContainer}>
-        {typeof novaScore === 'number' && novaScore >= 0 && (
-          <ScoreDisplay score={novaScore} scoreTitle={t('scores.processedGrade')} />
+        {novaScore!! && (
+          <ScoreDisplay
+            score={novaScore.value}
+            color={getBackgroundColor(novaScore.color) ?? 'white'}
+            scoreTitle={t('scores.processedGrade')}
+          />
         )}
-        {typeof nutriScore === 'number' && nutriScore >= 0 && (
-          <ScoreDisplay score={nutriScore} scoreTitle={t('scores.nutrition')} />
+        {nutriScore!! && (
+          <ScoreDisplay
+            score={nutriScore.value}
+            color={nutriScore.color ?? 'white'}
+            scoreTitle={t('scores.nutrition')}
+          />
         )}
-        {typeof plantScore === 'number' && plantScore >= 0 && (
-          <ScoreDisplay score={plantScore} scoreTitle={t('scores.plantGrade')} />
+        {plantScore!! && (
+          <ScoreDisplay
+            score={plantScore.value}
+            color={getBackgroundColor(plantScore.color) ?? 'white'}
+            scoreTitle={t('scores.plantGrade')}
+          />
         )}
       </View>
     </ShadowView>

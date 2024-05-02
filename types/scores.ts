@@ -1,7 +1,25 @@
+import type { ColorType } from '@/constants/Colors';
+import type { ViewStyle } from 'react-native';
+
 export type Scores = {
-  novaScore: number;
+  novaScore: NovaScore;
   negativePoints: number;
   positivePoints: number;
-  nutriScore: number;
-  plantScore: number;
+  nutriScore: NutriScore;
+  plantScore: PlantScore;
+};
+
+export type NovaScore = {
+  value: '1' | '2' | '3' | '4';
+  color: keyof ColorType;
+};
+
+export type NutriScore = {
+  value: 'A' | 'B' | 'C' | 'D' | 'E';
+  color: ViewStyle['backgroundColor'];
+};
+
+export type PlantScore = {
+  value: '1' | '2' | '3' | '4' | '5' | '6';
+  color: keyof ColorType;
 };

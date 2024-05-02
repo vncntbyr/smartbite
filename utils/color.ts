@@ -2,6 +2,7 @@ import { Colors, type ColorType } from '@/constants/Colors';
 import { useColorScheme } from 'react-native';
 
 export const getBackgroundColor = (color: keyof ColorType) => {
+  if (!color) return '#ffffff';
   return useColorScheme() === 'light' ? Colors[color]['400'] : Colors[color]['600'];
 };
 
