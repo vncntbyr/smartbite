@@ -24,8 +24,8 @@ export const getIngredients = (data: any): Ingredient[] => {
       } else {
         result.push({
           name: removeUnderscores(ingredient.text),
-          isVegan: ingredient.vegan === 'yes' ? true : false,
-          isVegetarian: ingredient.vegetarian === 'yes' ? true : false,
+          isVegan: ingredient.vegan === 'no' ? false : true,
+          isVegetarian: ingredient.vegetarian === 'no' ? false : true,
         });
       }
     }
