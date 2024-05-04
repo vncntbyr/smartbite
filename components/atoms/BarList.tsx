@@ -3,11 +3,9 @@ import { FlatList, StyleSheet } from 'react-native';
 export function BarList<T>({
   data,
   renderItem,
-  withSections,
 }: {
   data: T[] | undefined;
   renderItem: ({ item }: { item: T }) => JSX.Element;
-  withSections?: boolean;
 }): JSX.Element {
   return (
     <FlatList
