@@ -15,7 +15,8 @@
   },
   "navigation": {
     "back": "Back",
-    "barcodeTitle": "Product Information"
+    "barcodeTitle": "Product Information",
+    "detailsTitle": "Detail Information"
   },
   "scores": {
     "processedGrade": "NOVA",
