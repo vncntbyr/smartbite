@@ -1,21 +1,20 @@
-import { StyleSheet, ViewProps, ViewStyle } from 'react-native';
+import { StyleSheet, ViewProps, ViewStyle, View as ContainerView } from 'react-native';
 import { View } from './Themed';
 
-export function HStack({
-  children,
-  gap,
-  style,
-  otherProps,
-}: {
-  children: any;
+type HStackProps = {
+  children: JSX.Element[] | JSX.Element;
   gap?: number;
   style?: ViewStyle;
   otherProps?: ViewProps; //ComponentProps<typeof View>
-}) {
+  isContainerView?: boolean;
+};
+
+export function HStack({ children, gap, style, otherProps, isContainerView = false }: HStackProps) {
+  let ViewComponent = isContainerView ? ContainerView : View;
   return (
-    <View style={[styles.hStack, { gap: gap }, style]} {...otherProps}>
+    <ViewComponent style={[styles.hStack, { gap: gap }, style]} {...otherProps}>
       {children}
-    </View>
+    </ViewComponent>
   );
 }
 
