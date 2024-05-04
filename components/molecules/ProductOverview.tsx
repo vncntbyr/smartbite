@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import { View, Text } from '@/components/atoms/Themed';
 import { ScoreDisplay } from './ScoreDisplay';
@@ -6,10 +6,12 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { ShadowView } from '../atoms/ShadowView';
 import type { NovaScore, NutriScore, PlantScore } from '@/types/Scores';
 import { getBackgroundColor } from '@/utils/color';
+import { Link } from 'expo-router';
 
 type ProductOverviewProps = {
   imgUrl: string;
   productName: string;
+  barcode: string;
   nutrients: Record<string, number>;
   nutriScore?: NutriScore;
   novaScore?: NovaScore;
@@ -25,6 +27,7 @@ const blurhash =
 export const ProductOverview = ({
   imgUrl,
   productName,
+  barcode,
   nutrients,
   nutriScore,
   novaScore,
@@ -33,51 +36,63 @@ export const ProductOverview = ({
   const t = useTranslation();
   const { energyKcal, energyKcalUnit } = nutrients;
   return (
-    <ShadowView style={styles.overviewContainer}>
-      <View style={styles.imageTitleContainer}>
-        <Image style={styles.image} source={imgUrl} placeholder={blurhash} contentFit="contain" />
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{productName}</Text>
-          <Text>
-            {energyKcal} {energyKcalUnit} / 100g
-          </Text>
-        </View>
-      </View>
-      <View style={styles.scoreContainer}>
-        {novaScore!! && (
-          <ScoreDisplay
-            score={novaScore.value}
-            color={getBackgroundColor(novaScore.color) ?? 'white'}
-            scoreTitle={t('scores.processedGrade')}
-          />
-        )}
-        {nutriScore!! && (
-          <ScoreDisplay
-            score={nutriScore.value}
-            color={nutriScore.color ?? 'white'}
-            scoreTitle={t('scores.nutrition')}
-          />
-        )}
-        {plantScore!! && (
-          <ScoreDisplay
-            score={plantScore.value}
-            color={getBackgroundColor(plantScore.color) ?? 'white'}
-            scoreTitle={t('scores.plantGrade')}
-          />
-        )}
-      </View>
-    </ShadowView>
+    <Link href={`/barcode/${barcode}/details`} asChild>
+      <Pressable style={styles.clickableContainer}>
+        <ShadowView style={styles.overviewContainer}>
+          <View style={styles.imageTitleContainer}>
+            <Image
+              style={styles.image}
+              source={imgUrl}
+              placeholder={blurhash}
+              contentFit="contain"
+            />
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>{productName}</Text>
+              <Text>
+                {energyKcal} {energyKcalUnit} / 100g
+              </Text>
+            </View>
+          </View>
+          <View style={styles.scoreContainer}>
+            {novaScore!! && (
+              <ScoreDisplay
+                score={novaScore.value}
+                color={getBackgroundColor(novaScore.color) ?? 'white'}
+                scoreTitle={t('scores.processedGrade')}
+              />
+            )}
+            {nutriScore!! && (
+              <ScoreDisplay
+                score={nutriScore.value}
+                color={nutriScore.color ?? 'white'}
+                scoreTitle={t('scores.nutrition')}
+              />
+            )}
+            {plantScore!! && (
+              <ScoreDisplay
+                score={plantScore.value}
+                color={getBackgroundColor(plantScore.color) ?? 'white'}
+                scoreTitle={t('scores.plantGrade')}
+              />
+            )}
+          </View>
+        </ShadowView>
+      </Pressable>
+    </Link>
   );
 };
 
 const styles = StyleSheet.create({
+  clickableContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    marginTop: 16,
+    width: '90%',
+  },
   overviewContainer: {
     flex: 1,
-    flexDirection: 'column',
     justifyContent: 'space-between',
-    marginTop: 16,
     padding: 16,
-    width: '90%',
   },
   imageTitleContainer: {
     flexDirection: 'row',

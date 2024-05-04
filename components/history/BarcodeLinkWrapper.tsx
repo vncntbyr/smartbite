@@ -13,7 +13,7 @@ export function BarcodeLinkWrapper({
   style,
 }: BarcodeLinkWrapperProps): JSX.Element {
   return (
-    <Link href={`/barcode/${barcode}`} style={style} asChild>
+    <Link href={`/barcode/${barcode}/`} style={style} asChild>
       <Pressable>{children}</Pressable>
     </Link>
   );

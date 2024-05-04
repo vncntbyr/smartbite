@@ -57,7 +57,7 @@ function RootLayoutNav() {
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen
-            name="barcode/[slug]"
+            name="barcode/[slug]/index"
             options={{
               headerShown: true,
               title: t('navigation.barcodeTitle'),
@@ -65,7 +65,15 @@ function RootLayoutNav() {
             }}
           />
           <Stack.Screen
-            name="InfoModal"
+            name="barcode/[slug]/details"
+            options={{
+              headerShown: true,
+              title: t('navigation.detailsTitle'),
+              headerBackTitle: t('navigation.back'),
+            }}
+          />
+          <Stack.Screen
+            name="(modals)/InfoModal"
             options={{
               presentation: 'modal',
               title: t('infoModal.title'),
@@ -82,7 +90,7 @@ function RootLayoutNav() {
             }}
           />
           <Stack.Screen
-            name="CameraModal"
+            name="(modals)/CameraModal"
             options={{ headerShown: false, presentation: 'modal' }}
           />
         </Stack>
