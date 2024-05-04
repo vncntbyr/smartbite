@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { Text, View } from '../atoms/Themed';
+import { Text } from '../atoms/Themed';
 import { Image } from 'expo-image';
 import { VStack } from '../atoms/VStack';
 
 export const ErrorScreen = () => {
   return (
-    <VStack flex={1} gap={16} style={styles.center}>
+    <VStack flex={1} gap={16} style={styles.center} isContainerView>
       <Text style={styles.error}>Oh no!</Text>
       <Image
         style={styles.errorImage}

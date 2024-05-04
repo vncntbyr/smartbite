@@ -1,6 +1,6 @@
-import { SectionList, StyleSheet } from 'react-native';
+import { View as ContainerView, SectionList, StyleSheet } from 'react-native';
 
-import { Text, View } from '@/components/atoms/Themed';
+import { Text } from '@/components/atoms/Themed';
 import { useCallback } from 'react';
 import { HistoryItem } from '@/components/history/HistoryItem';
 import { useFocusEffect } from 'expo-router';
@@ -18,8 +18,8 @@ export default function HistoryScreen() {
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.listContainer}>
+    <ContainerView style={styles.container}>
+      <ContainerView style={styles.listContainer}>
         <SectionList
           sections={history}
           renderItem={({ item }): JSX.Element => {
@@ -47,8 +47,8 @@ export default function HistoryScreen() {
           stickySectionHeadersEnabled={false}
           inverted
         />
-      </View>
-    </View>
+      </ContainerView>
+    </ContainerView>
   );
 }
 

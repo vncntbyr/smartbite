@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View as ContainerView } from 'react-native';
 import type { Ingredient } from '@/types/Ingredient';
 import { BarList } from '../atoms/BarList';
 import { CameraButton } from '../atoms/CameraButton';
@@ -40,7 +40,7 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
   const { ingredients, imgUrl, nutrients, productName, scores } = productData;
 
   return (
-    <View style={styles.container}>
+    <ContainerView style={styles.container}>
       <ProductOverview
         imgUrl={imgUrl}
         barcode={barcode}
@@ -48,7 +48,7 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
         nutrients={nutrients}
         {...scores}
       />
-      <View style={styles.ingredientContainer}>
+      <ContainerView style={styles.ingredientContainer}>
         <Text style={styles.title}>Ingredients</Text>
         <BarList
           data={ingredients}
@@ -62,9 +62,9 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
             );
           }}
         />
-      </View>
+      </ContainerView>
       {isScanPage && <CameraButton style={styles.cameraButton} />}
-    </View>
+    </ContainerView>
   );
 };
 
