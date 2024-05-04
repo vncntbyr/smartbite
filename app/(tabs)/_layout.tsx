@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { Pressable, View, useColorScheme } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -26,6 +26,18 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        headerBackgroundContainerStyle: {
+          backgroundColor: Colors[colorScheme ?? 'light'].headerBackground,
+        },
+        headerBackground: () => null,
+        tabBarBackground: () => (
+          <View
+            style={{
+              borderTopWidth: 1,
+              borderTopColor: Colors[colorScheme ?? 'light'].borderColor,
+            }}
+          ></View>
+        ),
       }}
       initialRouteName="index"
     >
