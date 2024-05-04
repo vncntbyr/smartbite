@@ -51,6 +51,14 @@ function RootLayoutNav() {
   const t = useTranslation();
   const colorScheme = useColorScheme();
 
+  // Shared settings for header styling.
+  const headerStyle = {
+    headerStyle: { backgroundColor: Colors[colorScheme ?? 'light'].headerBackground },
+    headerShadowVisible: false,
+    headerShown: true,
+    headerBackTitle: t('navigation.back'),
+  };
+
   return (
     <GestureHandlerRootView>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
@@ -59,17 +67,15 @@ function RootLayoutNav() {
           <Stack.Screen
             name="barcode/[slug]/index"
             options={{
-              headerShown: true,
+              ...headerStyle,
               title: t('navigation.barcodeTitle'),
-              headerBackTitle: t('navigation.back'),
             }}
           />
           <Stack.Screen
             name="barcode/[slug]/details"
             options={{
-              headerShown: true,
+              ...headerStyle,
               title: t('navigation.detailsTitle'),
-              headerBackTitle: t('navigation.back'),
             }}
           />
           <Stack.Screen
