@@ -74,3 +74,50 @@ const getNovaScore = (value: NovaScore['value']): NovaScore => {
     color,
   };
 };
+
+export const getNovaScoreExplanation = (novaScore: NovaScore): string => {
+  switch (novaScore.value.toString()) {
+    case '1':
+      return 'scores.processedGrade.1';
+    case '2':
+      return 'scores.processedGrade.2';
+    case '3':
+      return 'scores.processedGrade.3';
+    case '4':
+      return 'scores.processedGrade.4';
+    default:
+      return '';
+  }
+};
+
+export const getNutriScoreExplanation = (nutriScore: NutriScore): string => {
+  switch (nutriScore.value) {
+    case 'A':
+      return 'scores.nutrition.A';
+    case 'B':
+      return 'scores.nutrition.B';
+    case 'C':
+      return 'scores.nutrition.C';
+    case 'D':
+      return 'scores.nutrition.D';
+    case 'E':
+      return 'scores.nutrition.E';
+    default:
+      return '';
+  }
+};
+
+export const getPlantScoreExplanation = (plantScore: PlantScore): string => {
+  switch (plantScore.value.toString()) {
+    case '1':
+      return 'scores.plantGrade.1';
+    case '2':
+      return 'scores.plantGrade.2';
+    case '3':
+      return 'scores.plantGrade.3';
+    case '4':
+      return 'scores.plantGrade.4';
+    default:
+      return '';
+  }
+};
