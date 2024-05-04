@@ -13,6 +13,7 @@ import useSWR from 'swr';
 import { NoBarcodeScanned } from './NoBarcodeScanned';
 import { OverviewScreenSkeleton } from '../skeletons/OverviewScreenSkeleton';
 import { useProductStore } from '@/storage/productData';
+import { ErrorScreen } from './ErrorScreen';
 
 type ProductDetailScreenProps = {
   barcode: string;
@@ -34,8 +35,7 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
 
   if (isLoading) return <OverviewScreenSkeleton />;
 
-  // TODO: implement cool error screen.
-  if (!productData || error) return <Text>Something went wrong...</Text>;
+  if (!productData || error) return <ErrorScreen />;
 
   const { ingredients, imgUrl, nutrients, productName, scores } = productData;
 
