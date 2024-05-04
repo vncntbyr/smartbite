@@ -47,7 +47,7 @@ const Skeleton = ({
 
   const interpolatedValue = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: ['rgba(200, 200, 200, 0.2)', 'rgba(200, 200, 200, 0.1)'],
+    outputRange: ['rgba(200, 200, 200, 0.25)', 'rgba(200, 200, 200, 0.15)'],
   });
 
   return (
