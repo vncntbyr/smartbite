@@ -4,13 +4,16 @@ import { View, Text } from '@/components/atoms/Themed';
 export type ScoreDisplayProps = {
   score: string | number;
   color: ViewStyle['backgroundColor'];
+  isSquare?: boolean;
   scoreTitle: string;
 };
 
-export const ScoreDisplay = ({ score, color, scoreTitle }: ScoreDisplayProps) => {
+export const ScoreDisplay = ({ score, color, scoreTitle, isSquare = false }: ScoreDisplayProps) => {
   return (
     <View style={styles.container}>
-      <View style={[styles.scoreContainer, { backgroundColor: color }]}>
+      <View
+        style={[styles.scoreContainer, { backgroundColor: color }, isSquare && { borderRadius: 0 }]}
+      >
         <Text style={styles.score}>{score}</Text>
       </View>
       <Text>{scoreTitle}</Text>
