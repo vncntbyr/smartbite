@@ -1,13 +1,13 @@
 import { StyleSheet, ViewProps, ViewStyle, View as ContainerView } from 'react-native';
 import { View } from './Themed';
+import type { PropsWithChildren } from 'react';
 
-type HStackProps = {
-  children: JSX.Element[] | JSX.Element;
+type HStackProps = PropsWithChildren<{
   gap?: number;
   style?: ViewStyle;
   otherProps?: ViewProps; //ComponentProps<typeof View>
   isContainerView?: boolean;
-};
+}>;
 
 export function HStack({ children, gap, style, otherProps, isContainerView = false }: HStackProps) {
   let ViewComponent = isContainerView ? ContainerView : View;
@@ -20,7 +20,7 @@ export function HStack({ children, gap, style, otherProps, isContainerView = fal
 
 const styles = StyleSheet.create({
   hStack: {
-    display: 'flex',
+    alignItems: 'center',
     flexDirection: 'row',
   },
 });
