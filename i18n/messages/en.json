@@ -19,9 +19,19 @@
     "detailsTitle": "Detail Information"
   },
   "scores": {
-    "processedGrade": "NOVA",
-    "nutrition": "Nutri",
-    "plantGrade": "Plant Grade"
+    "processedGrade": {
+      "title": "NOVA",
+      "1": "Unprocessed or minimally processed foods",
+      "2": "Processed culinary ingredients",
+      "3": "Processed foods",
+      "4": "Ultra-processed food and drink products"
+    },
+    "nutrition": {
+      "title": "Nutri"
+    },
+    "plantGrade": {
+      "title": "Plant Grade"
+    }
   },
   "scanner": {
     "description": "Scan your first product to inform yourself about ingredients and quality.",

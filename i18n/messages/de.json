@@ -19,9 +19,19 @@
     "detailsTitle": "Detailansicht"
   },
   "scores": {
-    "processedGrade": "NOVA",
-    "nutrition": "Nutri",
-    "plantGrade": "Pflanzenbasis"
+    "processedGrade": {
+      "title": "NOVA",
+      "1": "Unverarbeitete oder minimal verarbeitete Lebensmittel",
+      "2": "Verarbeitete kulinarische Zutaten",
+      "3": "Verarbeitete Lebensmittel",
+      "4": "Ultraverarbeitete Lebensmittel und Getränke"
+    },
+    "nutrition": {
+      "title": "Nutri"
+    },
+    "plantGrade": {
+      "title": "Pflanzenbasis"
+    }
   },
   "scanner": {
     "description": "Scanne dein erstes Produkt, um dich über Inhaltsstofe und Qualität zu informieren.",

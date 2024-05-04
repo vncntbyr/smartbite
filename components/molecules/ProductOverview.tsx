@@ -58,21 +58,21 @@ export const ProductOverview = ({
               <ScoreDisplay
                 score={novaScore.value}
                 color={getBackgroundColor(novaScore.color) ?? 'white'}
-                scoreTitle={t('scores.processedGrade')}
+                scoreTitle={t('scores.processedGrade.title')}
               />
             )}
             {nutriScore!! && (
               <ScoreDisplay
                 score={nutriScore.value}
                 color={nutriScore.color ?? 'white'}
-                scoreTitle={t('scores.nutrition')}
+                scoreTitle={t('scores.nutrition.title')}
               />
             )}
             {plantScore!! && (
               <ScoreDisplay
                 score={plantScore.value}
                 color={getBackgroundColor(plantScore.color) ?? 'white'}
-                scoreTitle={t('scores.plantGrade')}
+                scoreTitle={t('scores.plantGrade.title')}
               />
             )}
           </View>
