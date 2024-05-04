@@ -43,6 +43,7 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
     <View style={styles.container}>
       <ProductOverview
         imgUrl={imgUrl}
+        barcode={barcode}
         productName={productName}
         nutrients={nutrients}
         {...scores}
