@@ -21,16 +21,25 @@
   "scores": {
     "processedGrade": {
       "title": "NOVA",
-      "1": "Unprocessed or minimally processed foods",
-      "2": "Processed culinary ingredients",
-      "3": "Processed foods",
-      "4": "Ultra-processed food and drink products"
+      "1": "Unprocessed or minimally processed foods (Fresh, Frozen, Fermented)",
+      "2": "Processed culinary ingredients (Pressed, Refined, Ground)",
+      "3": "Processed foods (Smoked, Baked, Preserved)",
+      "4": "Ultra-processed foods and beverages (multiple processing steps, preservatives)"
     },
     "nutrition": {
-      "title": "Nutri"
+      "title": "Nutri",
+      "A": "Very good compared to products from the same product group",
+      "B": "Good compared to products from the same product group",
+      "C": "Moderate compared to products from the same product group",
+      "D": "Poor compared to products from the same product group",
+      "E": "Very poor compared to products from the same product group"
     },
     "plantGrade": {
-      "title": "Plant Grade"
+      "title": "Plant Grade",
+      "1": "All Ingredients are vegan and vegeterian.",
+      "2": "This should never be possibly the case.",
+      "3": "All Ingredients are vegeterian, but at least one is not vegan.",
+      "4": "There are ingredients that are neither vegeterian nor vegan."
     }
   },
   "scanner": {

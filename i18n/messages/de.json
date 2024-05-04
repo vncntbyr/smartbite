@@ -21,16 +21,25 @@
   "scores": {
     "processedGrade": {
       "title": "NOVA",
-      "1": "Unverarbeitete oder minimal verarbeitete Lebensmittel",
-      "2": "Verarbeitete kulinarische Zutaten",
-      "3": "Verarbeitete Lebensmittel",
-      "4": "Ultraverarbeitete Lebensmittel und Getränke"
+      "1": "Unverarbeitete oder minimal verarbeitete Lebensmittel (Frisch, Tiefgrefroren, Fermentiert)",
+      "2": "Verarbeitete kulinarische Zutaten (Gepresst, Raffiniert, Gemahlen)",
+      "3": "Verarbeitete Lebensmittel (Geräuchert, Gebacken, Konserviert)",
+      "4": "Ultraverarbeitete Lebensmittel und Getränke (Mehrere Verarbeitungsschritte, Konservierungsstoffe)"
     },
     "nutrition": {
-      "title": "Nutri"
+      "title": "Nutri",
+      "A": "Sehr gut im Vergleich zu Produkten aus der gleichen Produktgruppe",
+      "B": "Gut im Vergleich zu Produkten aus der gleichen Produktgruppe",
+      "C": "Mäßig im Vergleich zu Produkten aus der gleichen Produktgruppe",
+      "D": "Schlecht im Vergleich zu Produkten aus der gleichen Produktgruppe",
+      "E": "Sehr schlecht im Vergleich zu Produkten aus der gleichen Produktgruppe"
     },
     "plantGrade": {
-      "title": "Pflanzenbasis"
+      "title": "Pflanzenbasis",
+      "1": "Alle Zutaten sind vegan und vegetarisch.",
+      "2": "Dies sollte möglichst nie der Fall sein.",
+      "3": "Alle Zutaten sind vegetarisch, aber mindestens eine ist nicht vegan.",
+      "4": "Es gibt Zutaten, die weder pflanzlich noch vegan sind."
     }
   },
   "scanner": {
