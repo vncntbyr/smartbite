@@ -13,7 +13,7 @@ type VStackProps = {
 export function VStack({
   children,
   gap,
-  flex,
+  flex = 1,
   style,
   otherProps,
   isContainerView = false,
@@ -30,6 +30,5 @@ export function VStack({
 const styles = StyleSheet.create({
   hStack: {
     display: 'flex',
-    flexDirection: 'column',
   },
 });
