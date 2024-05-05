@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet } from 'react-native';
+import { Platform, Pressable, StyleSheet } from 'react-native';
 import { Image } from 'expo-image';
 import { View, Text } from '@/components/atoms/Themed';
 import { ScoreDisplay } from './ScoreDisplay';
@@ -47,28 +47,36 @@ export const ProductOverview = ({
               contentFit="contain"
             />
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>{productName}</Text>
+              <Text
+                // Android adjusts the font size through adjustsFontSizeToFit.
+                adjustsFontSizeToFit
+                // iOS adjusts the font size like this. May lead to unreadable sizes.
+                numberOfLines={Platform.OS === 'ios' ? 5 : undefined}
+                style={styles.title}
+              >
+                {productName}
+              </Text>
               <Text>
                 {energyKcal} {energyKcalUnit} / 100g
               </Text>
             </View>
           </View>
           <View style={styles.scoreContainer}>
-            {novaScore!! && (
+            {novaScore?.value && (
               <ScoreDisplay
                 score={novaScore.value}
                 color={getBackgroundColor(novaScore.color) ?? 'white'}
                 scoreTitle={t('scores.processedGrade.title')}
               />
             )}
-            {nutriScore!! && (
+            {nutriScore?.value && (
               <ScoreDisplay
                 score={nutriScore.value}
                 color={nutriScore.color ?? 'white'}
                 scoreTitle={t('scores.nutrition.title')}
               />
             )}
-            {plantScore!! && (
+            {plantScore?.value && (
               <ScoreDisplay
                 score={plantScore.value}
                 color={getBackgroundColor(plantScore.color) ?? 'white'}
