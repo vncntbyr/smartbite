@@ -28,7 +28,7 @@ const getColorForNumericScore = (score: number): keyof ColorType => {
 };
 
 const getColorForNutriScore = (score: NutriScore['value']): string => {
-  switch (score.toLowerCase()) {
+  switch (score?.toLowerCase()) {
     case 'a':
       return '#1A9850';
     case 'b':
@@ -62,7 +62,7 @@ const getPlantScore = (ingredients: any): PlantScore => {
 
 const getNutriScore = (nutriScore: NutriScore['value']): NutriScore => {
   return {
-    value: nutriScore.toUpperCase() as NutriScore['value'],
+    value: nutriScore?.toUpperCase() as NutriScore['value'],
     color: getColorForNutriScore(nutriScore),
   };
 };
@@ -76,7 +76,7 @@ const getNovaScore = (value: NovaScore['value']): NovaScore => {
 };
 
 export const getNovaScoreExplanation = (novaScore: NovaScore): string => {
-  switch (novaScore.value.toString()) {
+  switch (novaScore?.value?.toString()) {
     case '1':
       return 'scores.processedGrade.1';
     case '2':
