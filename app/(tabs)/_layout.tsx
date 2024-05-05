@@ -30,6 +30,7 @@ export default function TabLayout() {
           backgroundColor: Colors[colorScheme ?? 'light'].headerBackground,
         },
         headerBackground: () => null,
+        tabBarStyle: { backgroundColor: Colors[colorScheme ?? 'light'].headerBackground },
         tabBarBackground: () => (
           <View
             style={{
