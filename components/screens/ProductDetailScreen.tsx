@@ -1,10 +1,9 @@
-import { StyleSheet, View as ContainerView } from 'react-native';
+import { StyleSheet, View as ContainerView, SectionList } from 'react-native';
 import type { Ingredient } from '@/types/Ingredient';
-import { BarList } from '../atoms/BarList';
 import { CameraButton } from '../atoms/CameraButton';
 import { IngredientBar } from '../molecules/IngredientBar';
 import { ProductOverview } from '../molecules/ProductOverview';
-import { View, Text } from '../atoms/Themed';
+import { Text, View } from '../atoms/Themed';
 import { addToHistory } from '@/storage/store';
 import { getHistoryData } from '@/utils/dataMapper';
 import { fetchProductData } from '@/utils/network';
@@ -31,6 +30,10 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
     addToHistory(getHistoryData(productData));
   }, [productData]);
 
+  if (error) {
+    console.log('error', error);
+  }
+
   if (!barcode && isScanPage) return <NoBarcodeScanned />;
 
   if (isLoading) return <OverviewScreenSkeleton />;
@@ -38,7 +41,6 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
   if (!productData || error) return <ErrorScreen />;
 
   const { ingredients, imgUrl, nutrients, productName, scores } = productData;
-
   return (
     <ContainerView style={styles.container}>
       <ProductOverview
@@ -50,16 +52,21 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
       />
       <ContainerView style={styles.ingredientContainer}>
         <Text style={styles.title}>Ingredients</Text>
-        <BarList
-          data={ingredients}
-          renderItem={({ item }: { item: Ingredient }): JSX.Element => {
-            return (
-              <IngredientBar
-                ingredientName={item.name}
-                isVegan={item.isVegan}
-                isVegetarian={item.isVegetarian}
-              />
-            );
+        <SectionList
+          sections={ingredients}
+          contentContainerStyle={styles.ingredientContentContainer}
+          style={styles.ingredientList}
+          stickyHeaderHiddenOnScroll
+          renderItem={({ item }: { item: Ingredient }): JSX.Element => (
+            <IngredientBar
+              ingredientName={item.name}
+              isVegan={item.isVegan}
+              isVegetarian={item.isVegetarian}
+            />
+          )}
+          renderSectionHeader={({ section }) => {
+            if (!section.title) return <View style={styles.removeGap} />;
+            return <Text>{section.title}</Text>;
           }}
         />
       </ContainerView>
@@ -87,5 +94,15 @@ const styles = StyleSheet.create({
     gap: 8,
     alignItems: 'flex-start',
     width: '90%',
+  },
+  ingredientContentContainer: {
+    gap: 6,
+    padding: 2,
+  },
+  ingredientList: {
+    width: '100%',
+  },
+  removeGap: {
+    paddingTop: -8,
   },
 });

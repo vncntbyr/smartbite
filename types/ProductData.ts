@@ -1,9 +1,9 @@
-import type { Ingredient } from './Ingredient';
-import type { Scores } from './Scores';
+import type { IngredientSection } from './Ingredient';
+import type { Scores } from './scores';
 
 export type ProductData = {
   barcode: string;
-  ingredients: Ingredient[];
+  ingredients: IngredientSection[];
   imgUrl: string;
   thumbnailUrl: string;
   nutrients: any;
