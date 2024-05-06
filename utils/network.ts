@@ -6,6 +6,7 @@ import { getIngredients } from './ingredients';
 export const fetchProductData = async (barcode: string): Promise<ProductData> => {
   if (!barcode) return Promise.reject('No barcode provided');
   const result = await fetch(`https://world.openfoodfacts.org/api/v3/product/${barcode}.json`);
+  // TODO: something here causes a SyntaxError: JSON Parse error: Unexpected character: <]. -> Fix / make failsafe
   const foodData = await result.json();
   return {
     barcode,
