@@ -20,6 +20,15 @@
     "barcodeTitle": "Produktinformationen",
     "detailsTitle": "Detailansicht"
   },
+  "about": {
+    "aboutMe": "Über mich",
+    "dataUsage": "Datennutzung",
+    "analytics": "Zahlen und Fakten",
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutz",
+    "contact": "Nimm Kontakt auf",
+    "coffee": "Kauf mir einen Kaffee"
+  },
   "scores": {
     "processedGrade": {
       "title": "NOVA",

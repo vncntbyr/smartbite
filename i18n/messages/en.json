@@ -20,6 +20,15 @@
     "barcodeTitle": "Product Information",
     "detailsTitle": "Detail Information"
   },
+  "about": {
+    "aboutMe": "About me",
+    "dataUsage": "Data usage",
+    "analytics": "Facts and figures",
+    "terms": "Terms of use",
+    "privacy": "Privacy",
+    "contact": "Get in touch",
+    "coffee": "Buy me a coffee"
+  },
   "scores": {
     "processedGrade": {
       "title": "NOVA",
