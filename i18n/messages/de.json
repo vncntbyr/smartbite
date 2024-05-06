@@ -3,9 +3,11 @@
     "titel": "Info",
     "sourceTitle": "Wie wir unsere Daten erhalten:",
     "sourceText": "Wir verwenden die OpenFoodFacts API, um unsere Daten zu erhalten. Dies bedeutet, dass wir Zugang zu einer großen Datenbank mit Lebensmitteln haben. Dies ermöglicht es uns, Ihnen Informationen über das gescannte Produkt zur Verfügung zu stellen.",
+    "dataAnomaliesTitle": "Warum die Daten manchmal seltsam aussehen:",
+    "dataAnomaliesText": "Da alle Daten in OpenFoodFacts von der Gemeinschaft stammen oder automatisch analysiert werden, gibt es manchmal Fehler in den Daten. Dies kann alles sein, von falschen Zutaten oder falscher Clusterung von Zutaten bis hin zu fehlenden Informationen.",
     "contributionTitle": "Wie Sie beitragen können:",
-    "contributionText": "Sie können helfen, indem Sie einen Beitrag zur OpenFoodFacts-Datenbank leisten. Du kannst dies tun, indem du Produkte mit deinem Handy scannst und Bilder hochlädst. Auf diese Weise können Sie dazu beitragen, die Datenbank noch größer und besser zu machen.",
-    "furtherInformation": "Erfahren Sie mehr auf der",
+    "contributionText": "Du kannst die Datenqualität verbessern, indem Du einen Beitrag zur OpenFoodFacts-Datenbank leisten. Du kannst dies tun, indem du Produkte mit deinem Handy scannst und Bilder hochlädst. Auf diese Weise kannst Du dazu beitragen, die Datenbank noch größer und besser zu machen.",
+    "furtherInformation": "Erfahre mehr auf der",
     "externalLink": "OpenFoodFacts-Website"
   },
   "bottomTabNavigation": {

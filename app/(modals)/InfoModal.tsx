@@ -12,6 +12,8 @@ export default function InfoModal() {
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
       <Text style={styles.title}>{t('infoModal.sourceTitle')}</Text>
       <Text>{t('infoModal.sourceText')}</Text>
+      <Text style={styles.title}>{t('infoModal.dataAnomaliesTitle')}</Text>
+      <Text>{t('infoModal.dataAnomaliesText')}</Text>
       <Text style={styles.title}>{t('infoModal.contributionTitle')}</Text>
       <Text>{t('infoModal.contributionText')}</Text>
       <Text>

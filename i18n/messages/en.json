@@ -3,8 +3,10 @@
     "title": "Info",
     "sourceTitle": "How we get our data:",
     "sourceText": "We use the OpenFoodFacts API to get our data. This means that we have access to a large database of food products. This allows us to provide you with information about the product you scanned.",
+    "dataAnomaliesTitle": "Why the data sometimes looks weird:",
+    "dataAnomaliesText": "Due to the fact that all data in OpenFoodFacts is community-driven or analyzed automatically, there sometimes are mistakes in the data. This can be anything from wrong ingredients or wrong clustering of ingredients to missing information.",
     "contributionTitle": "How you can contribute:",
-    "contributionText": "You can help, by contributing to the OpenFoodFacts database. You can do this by scanning products with your phone and uploading pictures. This way you can help to make the database even bigger and better.",
+    "contributionText": "You can help to improve the experience for other users by contributing to the OpenFoodFacts database. You can do this by scanning products with your phone and uploading pictures. This way you can aid to make the database even bigger and better.",
     "furtherInformation": "Learn more on the",
     "externalLink": "OpenFoodFacts website"
   },
