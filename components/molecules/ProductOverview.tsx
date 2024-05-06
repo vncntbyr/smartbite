@@ -65,7 +65,7 @@ export const ProductOverview = ({
             {novaScore?.value && (
               <ScoreDisplay
                 score={novaScore.value}
-                color={getBackgroundColor(novaScore.color) ?? 'white'}
+                color={novaScore.color ?? 'white'}
                 scoreTitle={t('scores.processedGrade.title')}
               />
             )}
@@ -79,7 +79,7 @@ export const ProductOverview = ({
             {plantScore?.value && (
               <ScoreDisplay
                 score={plantScore.value}
-                color={getBackgroundColor(plantScore.color) ?? 'white'}
+                color={plantScore.color ?? 'white'}
                 scoreTitle={t('scores.plantGrade.title')}
               />
             )}

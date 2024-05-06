@@ -12,16 +12,16 @@ export const getScores = (data: any): Scores => {
   };
 };
 
-const getColorForNumericScore = (score: number): keyof ColorType => {
+const getColorForNumericScore = (score: number): string => {
   switch (score) {
     case 4:
-      return 'red';
+      return '#D73027';
     case 3:
-      return 'orange';
+      return '#FDAE61';
     case 2:
-      return 'yellow';
+      return '#dbbb07';
     case 1:
-      return 'green';
+      return '#1A9850';
     default:
       return 'white';
   }
@@ -34,7 +34,7 @@ const getColorForNutriScore = (score: NutriScore['value']): string => {
     case 'b':
       return '#91CF60';
     case 'c':
-      return '#FFEE8A';
+      return '#dbbb07';
     case 'd':
       return '#FDAE61';
     case 'e':

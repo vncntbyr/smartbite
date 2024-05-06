@@ -11,7 +11,7 @@ export type Scores = {
 
 export type NovaScore = {
   value: '1' | '2' | '3' | '4';
-  color: keyof ColorType;
+  color: ViewStyle['backgroundColor'];
 };
 
 export type NutriScore = {
@@ -21,5 +21,5 @@ export type NutriScore = {
 
 export type PlantScore = {
   value: '1' | '2' | '3' | '4';
-  color: keyof ColorType;
+  color: ViewStyle['backgroundColor'];
 };
