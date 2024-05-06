@@ -2,20 +2,27 @@ import { StyleSheet } from 'react-native';
 import { View, Text } from '../atoms/Themed';
 import { Feather } from '@expo/vector-icons';
 import type { PropsWithChildren } from 'react';
+import { ShadowView } from '../atoms/ShadowView';
 
 type NavigationBarProps = PropsWithChildren<{
   icon?: JSX.Element;
+  shadow?: boolean;
 }>;
 
-export const NavigationBar = ({ icon, children }: NavigationBarProps): JSX.Element => {
+export const NavigationBar = ({
+  icon,
+  children,
+  shadow = false,
+}: NavigationBarProps): JSX.Element => {
+  const ContainerView = shadow ? ShadowView : View;
   return (
-    <View style={styles.container}>
+    <ContainerView style={styles.container}>
       <View style={styles.contentContainer}>
         {icon && icon}
         <Text style={styles.text}>{children}</Text>
       </View>
       <Feather name="arrow-right" size={24} color="black" />
-    </View>
+    </ContainerView>
   );
 };
 
@@ -24,8 +31,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '90%',
     justifyContent: 'space-between',
-    backgroundColor: 'transparent',
     alignItems: 'center',
+    borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
