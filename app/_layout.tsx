@@ -9,6 +9,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useTranslation } from '@/hooks/useTranslation';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from 'react-native';
+import { aboutRoutes } from '@/constants/routes';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -99,6 +100,13 @@ function RootLayoutNav() {
             name="(modals)/CameraModal"
             options={{ headerShown: false, presentation: 'modal' }}
           />
+          {aboutRoutes.map((route) => (
+            <Stack.Screen
+              key={route.path}
+              name={route.path}
+              options={{ ...headerStyle, title: t(route.titleString) }}
+            />
+          ))}
         </Stack>
       </ThemeProvider>
     </GestureHandlerRootView>
