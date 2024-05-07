@@ -9,22 +9,34 @@ export default function AboutScreen() {
   const t = useTranslation();
   return (
     <ContainerView style={styles.container}>
-      <NavigationBar icon={icons.user} shadow>
+      <NavigationBar icon={icons.user} shadow link={'(about)/AboutMe'}>
         {t('about.aboutMe')}
       </NavigationBar>
       <NavigationGroup>
-        <NavigationBar icon={icons.data}>{t('about.dataUsage')}</NavigationBar>
-        <NavigationBar icon={icons.analytics}>{t('about.analytics')}</NavigationBar>
+        <NavigationBar icon={icons.data} link={'(about)/DataUsage'}>
+          {t('about.dataUsage')}
+        </NavigationBar>
+        <NavigationBar icon={icons.analytics} link={'(about)/Analytics'}>
+          {t('about.analytics')}
+        </NavigationBar>
       </NavigationGroup>
 
       <NavigationGroup>
-        <NavigationBar icon={icons.terms}>{t('about.terms')}</NavigationBar>
-        <NavigationBar icon={icons.privacy}>{t('about.privacy')}</NavigationBar>
+        <NavigationBar icon={icons.terms} link={'(about)/Terms'}>
+          {t('about.terms')}
+        </NavigationBar>
+        <NavigationBar icon={icons.privacy} link={'(about)/Privacy'}>
+          {t('about.privacy')}
+        </NavigationBar>
       </NavigationGroup>
 
       <NavigationGroup>
-        <NavigationBar icon={icons.contact}>{t('about.contact')}</NavigationBar>
-        <NavigationBar icon={icons.coffee}>{t('about.coffee')}</NavigationBar>
+        <NavigationBar icon={icons.contact} link={'(about)/Contact'}>
+          {t('about.contact')}
+        </NavigationBar>
+        <NavigationBar icon={icons.coffee} link={'(about)/Donation'}>
+          {t('about.coffee')}
+        </NavigationBar>
       </NavigationGroup>
     </ContainerView>
   );
