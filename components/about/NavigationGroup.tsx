@@ -26,7 +26,6 @@ export const NavigationGroup = ({ children }: PropsWithChildren): JSX.Element =>
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
     borderRadius: 10,
   },
   separator: {
