@@ -1,4 +1,4 @@
-import { View as ContainerView, SectionList, StyleSheet } from 'react-native';
+import { SectionList, StyleSheet } from 'react-native';
 
 import { Text } from '@/components/atoms/Themed';
 import { useCallback } from 'react';
@@ -6,6 +6,7 @@ import { HistoryItem } from '@/components/history/HistoryItem';
 import { useFocusEffect } from 'expo-router';
 import { useHistoryStore } from '@/storage/historyStore';
 import { ListEmptyComponent } from '@/components/history/EmptyHistory';
+import { ContainerView } from '@/components/atoms/ContainerView';
 
 export default function HistoryScreen() {
   const { history, fetchHistory } = useHistoryStore();
@@ -18,7 +19,7 @@ export default function HistoryScreen() {
   );
 
   return (
-    <ContainerView style={styles.container}>
+    <ContainerView centerHorizontal>
       <ContainerView style={styles.listContainer}>
         <SectionList
           sections={history}
@@ -53,10 +54,6 @@ export default function HistoryScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
   listContainer: {
     width: '90%',
   },

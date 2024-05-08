@@ -1,4 +1,4 @@
-import { StyleSheet, View as ContainerView, SectionList } from 'react-native';
+import { StyleSheet, SectionList } from 'react-native';
 import type { Ingredient } from '@/types/Ingredient';
 import { CameraButton } from '../atoms/CameraButton';
 import { IngredientBar } from '../molecules/IngredientBar';
@@ -13,6 +13,7 @@ import { NoBarcodeScanned } from './NoBarcodeScanned';
 import { OverviewScreenSkeleton } from '../skeletons/OverviewScreenSkeleton';
 import { useProductStore } from '@/storage/productData';
 import { ErrorScreen } from './ErrorScreen';
+import { ContainerView } from '../atoms/ContainerView';
 
 type ProductDetailScreenProps = {
   barcode: string;
@@ -42,7 +43,7 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
 
   const { ingredients, imgUrl, nutrients, productName, scores } = productData;
   return (
-    <ContainerView style={styles.container}>
+    <ContainerView centerHorizontal gap={16}>
       <ProductOverview
         imgUrl={imgUrl}
         barcode={barcode}
@@ -50,7 +51,7 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
         nutrients={nutrients}
         {...scores}
       />
-      <ContainerView style={styles.ingredientContainer}>
+      <ContainerView gap={8} style={styles.ingredientContainer}>
         <Text style={styles.title}>Ingredients</Text>
         <SectionList
           sections={ingredients}
@@ -76,11 +77,6 @@ export const ProductDetailScreen = ({ barcode, isScanPage }: ProductDetailScreen
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    gap: 16,
-  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -91,7 +87,6 @@ const styles = StyleSheet.create({
   },
   ingredientContainer: {
     flex: 2,
-    gap: 8,
     alignItems: 'flex-start',
     width: '90%',
   },

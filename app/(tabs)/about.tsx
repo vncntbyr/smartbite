@@ -1,14 +1,15 @@
-import { StyleSheet, View as ContainerView } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { NavigationGroup } from '@/components/about/NavigationGroup';
 import { NavigationBar } from '@/components/about/NavigationBar';
 import { icons } from '@/constants/Icons';
 import { useTranslation } from '@/hooks/useTranslation';
+import { ContainerView } from '@/components/atoms/ContainerView';
 
 export default function AboutScreen() {
   const t = useTranslation();
   return (
-    <ContainerView style={styles.container}>
+    <ContainerView centerHorizontal centerVertical gap={16}>
       <NavigationBar icon={icons.user} shadow link={'(about)/AboutMe'}>
         {t('about.aboutMe')}
       </NavigationBar>
@@ -43,12 +44,6 @@ export default function AboutScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 16,
-  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
