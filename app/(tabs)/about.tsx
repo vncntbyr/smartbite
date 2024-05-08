@@ -2,9 +2,9 @@ import { StyleSheet } from 'react-native';
 
 import { NavigationGroup } from '@/components/about/NavigationGroup';
 import { NavigationBar } from '@/components/about/NavigationBar';
-import { icons } from '@/constants/Icons';
 import { useTranslation } from '@/hooks/useTranslation';
 import { ContainerView } from '@/components/atoms/ContainerView';
+import { icons } from '@/constants/icons';
 
 export default function AboutScreen() {
   const t = useTranslation();

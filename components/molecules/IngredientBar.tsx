@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { View, Text } from '@/components/atoms/Themed';
 import { Bar } from '../atoms/Bar';
-import { icons } from '@/constants/Icons';
+import { icons } from '@/constants/icons';
 
 type IngredientBarProps = {
   ingredientName: string;

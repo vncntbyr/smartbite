@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feather, MaterialIcons, FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons, FontAwesome } from '@expo/vector-icons';
 import { MeatIcon } from '@/constants/icons/MeatIcon';
 import { NonVeganIcon } from '@/constants/icons/NonVeganIcon';
 import { VeganIcon } from '@/constants/icons/VeganIcon';
