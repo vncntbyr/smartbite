@@ -6,22 +6,14 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { ContainerView } from '@/components/atoms/ContainerView';
 import { icons } from '@/constants/icons';
 
+// TODO: This is quite ugly at the moment. Maybe i can map over the aboutRoutes in routes.ts which have all the required data. (But then, how do I group them reusably?)
 export default function AboutScreen() {
   const t = useTranslation();
   return (
     <ContainerView centerHorizontal centerVertical gap={16}>
-      <NavigationBar icon={icons.user} shadow link={'(about)/AboutMe'}>
-        {t('about.aboutMe')}
+      <NavigationBar icon={icons.analytics} link={'(about)/Analytics'}>
+        {t('about.analytics')}
       </NavigationBar>
-      <NavigationGroup>
-        <NavigationBar icon={icons.data} link={'(about)/DataUsage'}>
-          {t('about.dataUsage')}
-        </NavigationBar>
-        <NavigationBar icon={icons.analytics} link={'(about)/Analytics'}>
-          {t('about.analytics')}
-        </NavigationBar>
-      </NavigationGroup>
-
       <NavigationGroup>
         <NavigationBar icon={icons.terms} link={'(about)/Terms'}>
           {t('about.terms')}
@@ -32,6 +24,10 @@ export default function AboutScreen() {
       </NavigationGroup>
 
       <NavigationGroup>
+        {/* FIXME: This user icon somehow looks like its a few pixels off to the left. */}
+        <NavigationBar icon={icons.user} link={'(about)/AboutMe'}>
+          {t('about.aboutMe')}
+        </NavigationBar>
         <NavigationBar icon={icons.contact} link={'(about)/Contact'}>
           {t('about.contact')}
         </NavigationBar>
