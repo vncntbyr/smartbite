@@ -12,10 +12,6 @@ export const aboutRoutes = [
     titleString: 'about.contact',
   },
   {
-    path: '(about)/DataUsage',
-    titleString: 'about.dataUsage',
-  },
-  {
     path: '(about)/Donation',
     titleString: 'about.coffee',
   },
