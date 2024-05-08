@@ -42,7 +42,7 @@ export default function Page() {
         {novaScore?.value && (
           <ScoreExplanation
             value={novaScore.value}
-            color={novaScore.color}
+            color={novaScore.color ?? ''}
             title={t('scores.processedGrade.title')}
             explanation={t(getNovaScoreExplanation(novaScore))}
           />
@@ -63,7 +63,7 @@ export default function Page() {
             <Separator />
             <ScoreExplanation
               value={plantScore.value}
-              color={plantScore.color}
+              color={plantScore.color ?? ''}
               title={t('scores.plantGrade.title')}
               explanation={t(getPlantScoreExplanation(plantScore))}
             />
