@@ -1,19 +1,4 @@
-{
-  "name": "smartbite",
-  "main": "expo-router/entry",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "expo start",
-    "start:prod": "expo start --no-dev --minify",
-    "android": "expo start --android",
-    "clean": "find . -name \"node_modules\" -type d -prune -exec rm -rf '{}' +",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "test": "jest --watchAll"
-  },
-  "jest": {
-    "preset": "jest-expo"
-  },
+Dependencies should be:
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
     "@react-native-async-storage/async-storage": "1.23.1",
@@ -55,5 +40,3 @@
     "react-test-renderer": "19.0.0",
     "typescript": "^5.3.0"
   },
-  "private": true
-}

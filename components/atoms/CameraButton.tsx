@@ -12,7 +12,7 @@ export function CameraButton({ style }: CameraButtonProps) {
   const t = useTranslation();
   return (
     <Link
-      href="/CameraModal"
+      href="/(modals)/CameraModal"
       asChild
       style={[styles.cameraButton, style, { backgroundColor: getBackgroundColor('blue') }]}
     >

@@ -10,10 +10,10 @@ import { fetchProductData } from '@/utils/network';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 import { NoBarcodeScanned } from './NoBarcodeScanned';
-import { OverviewScreenSkeleton } from '../skeletons/OverviewScreenSkeleton';
 import { useProductStore } from '@/storage/productData';
 import { ErrorScreen } from './ErrorScreen';
 import { ContainerView } from '../atoms/ContainerView';
+import { OverviewScreenSkeleton } from '../Skeletons/OverviewScreenSkeleton';
 
 type ProductDetailScreenProps = {
   barcode: string;

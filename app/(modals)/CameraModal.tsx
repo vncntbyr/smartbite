@@ -1,57 +1,67 @@
 import { useBarcodeStore } from '@/hooks/useBarcodeStore';
 import { Ionicons } from '@expo/vector-icons';
-import { CameraType, Camera, type BarCodeScanningResult, FlashMode, AutoFocus } from 'expo-camera';
-import { useCameraPermissions } from 'expo-camera/next';
+import { CameraType, type BarcodeScanningResult, CameraView, useCameraPermissions } from 'expo-camera';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useAutofocus } from '@/hooks/useAutofocus';
 
+let hasScanned = false;
+
 export default function CameraModalScreen() {
-  const [facing, setFacing] = useState(CameraType.back);
-  const [flashMode, setFlashMode] = useState<FlashMode>(FlashMode.off);
+  const [facing, setFacing] = useState<CameraType>('back');
+  const [torchEnabled, setTorchEnabled] = useState<boolean>(false);
   const { setBarcode } = useBarcodeStore();
   const [permission, requestPermission] = useCameraPermissions();
   const { isRefreshing, focusSquare, onTap } = useAutofocus(650);
 
   if (!permission || !permission.granted) {
     return (
-      <View style={styles.container}>
+      <View style={styles.permissionContainer}>
         <Text>This app currently has no permission</Text>
         <Button title="Request permission" onPress={requestPermission} />
       </View>
     );
   }
 
-  const onBarCodeScanned = (barcodeData: BarCodeScanningResult): void => {
+  const onBarCodeScanned = (barcodeData: BarcodeScanningResult): void => {
+    if(hasScanned) {
+      console.log('already scanned')
+      return;
+    };
+    console.log('first scan')
+    hasScanned =true;
     setBarcode(barcodeData.data);
-    router.back();
+    console.log('Barcode scanned:', barcodeData.data);
+    router.dismiss();
+    setTimeout(() => hasScanned = false, 1000);
+
   };
 
   const toggleCameraFacing = () => {
-    setFacing((current) => (current === CameraType.back ? CameraType.front : CameraType.back));
+    setFacing((current) => (current === 'back' ? 'front' : 'back'));
   };
 
   const toggleFlashlight = () => {
-    setFlashMode((current) => (current === FlashMode.torch ? FlashMode.off : FlashMode.torch));
+    setTorchEnabled((current) => !current);
   };
 
   const tap = Gesture.Tap().onBegin(onTap);
   return (
     <GestureDetector gesture={tap}>
       <View style={styles.container}>
-        <Camera
+        <CameraView
           style={styles.camera}
-          type={facing}
-          autoFocus={isRefreshing ? AutoFocus.off : AutoFocus.on}
-          onBarCodeScanned={onBarCodeScanned}
-          flashMode={flashMode}
+          facing={facing}
+          autofocus={isRefreshing ? 'off' : 'on'}
+          onBarcodeScanned={onBarCodeScanned}
+          enableTorch={torchEnabled}
         >
           <View style={styles.buttonContainer}>
             <View style={styles.buttonWrapper}>
               <TouchableOpacity style={styles.button} onPress={toggleFlashlight}>
-                {flashMode === FlashMode.torch ? (
+                {torchEnabled ? (
                   <Ionicons name="flashlight" size={48} color="white" />
                 ) : (
                   <Ionicons name="flashlight-outline" size={48} color="white" />
@@ -62,7 +72,7 @@ export default function CameraModalScreen() {
               </TouchableOpacity>
             </View>
           </View>
-        </Camera>
+        </CameraView>
         {focusSquare.visible && (
           <View
             style={[styles.focusSquare, { top: focusSquare.y - 25, left: focusSquare.x - 25 }]}
@@ -74,6 +84,11 @@ export default function CameraModalScreen() {
 }
 
 const styles = StyleSheet.create({
+  permissionContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
   },
