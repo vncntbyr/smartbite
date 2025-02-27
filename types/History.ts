@@ -1,10 +1,10 @@
 export type HistoryEntry = {
-  timestamp: Date;
-  data: HistoryData[];
+	timestamp: Date;
+	data: HistoryData[];
 };
 
 export type HistoryData = {
-  barcode: string;
-  name: string;
-  thumbnailUrl: string;
+	barcode: string;
+	name: string;
+	thumbnailUrl: string;
 };

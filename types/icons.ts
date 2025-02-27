@@ -1,3 +1,3 @@
 export type HeaderIconProps = {
-  pressed?: boolean;
+	pressed?: boolean;
 };

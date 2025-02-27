@@ -1,9 +1,9 @@
-import { View, Text } from '@/components/atoms/Themed';
+import { Text, View } from "@/components/atoms/Themed";
 
 export default function Terms() {
-  return (
-    <View>
-      <Text>Terms of use</Text>
-    </View>
-  );
+	return (
+		<View>
+			<Text>Terms of use</Text>
+		</View>
+	);
 }

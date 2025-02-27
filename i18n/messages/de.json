@@ -1,59 +1,59 @@
 {
-  "infoModal": {
-    "titel": "Info",
-    "sourceTitle": "Wie wir unsere Daten erhalten:",
-    "sourceText": "Wir verwenden die OpenFoodFacts API, um unsere Daten zu erhalten. Dies bedeutet, dass wir Zugang zu einer großen Datenbank mit Lebensmitteln haben. Dies ermöglicht es uns, Ihnen Informationen über das gescannte Produkt zur Verfügung zu stellen.",
-    "dataAnomaliesTitle": "Warum die Daten manchmal seltsam aussehen:",
-    "dataAnomaliesText": "Da alle Daten in OpenFoodFacts von der Gemeinschaft stammen oder automatisch analysiert werden, gibt es manchmal Fehler in den Daten. Dies kann alles sein, von falschen Zutaten oder falscher Clusterung von Zutaten bis hin zu fehlenden Informationen.",
-    "contributionTitle": "Wie Sie beitragen können:",
-    "contributionText": "Du kannst die Datenqualität verbessern, indem Du einen Beitrag zur OpenFoodFacts-Datenbank leisten. Du kannst dies tun, indem du Produkte mit deinem Handy scannst und Bilder hochlädst. Auf diese Weise kannst Du dazu beitragen, die Datenbank noch größer und besser zu machen.",
-    "furtherInformation": "Erfahre mehr auf der",
-    "externalLink": "OpenFoodFacts-Website"
-  },
-  "bottomTabNavigation": {
-    "history": "Verlauf",
-    "scan": "Scanner",
-    "about": "Über uns"
-  },
-  "navigation": {
-    "back": "Zurück",
-    "barcodeTitle": "Produktinformationen",
-    "detailsTitle": "Detailansicht"
-  },
-  "about": {
-    "aboutMe": "Über mich",
-    "analytics": "Fakten und Zahlen",
-    "terms": "Nutzungsbedingungen",
-    "privacy": "Datenschutz",
-    "contact": "Nimm Kontakt auf",
-    "coffee": "Kauf mir einen Kaffee"
-  },
-  "scores": {
-    "processedGrade": {
-      "title": "NOVA",
-      "1": "Unverarbeitete oder minimal verarbeitete Lebensmittel (Frisch, Tiefgrefroren, Fermentiert)",
-      "2": "Verarbeitete kulinarische Zutaten (Gepresst, Raffiniert, Gemahlen)",
-      "3": "Verarbeitete Lebensmittel (Geräuchert, Gebacken, Konserviert)",
-      "4": "Ultraverarbeitete Lebensmittel und Getränke (Mehrere Verarbeitungsschritte, Konservierungsstoffe)"
-    },
-    "nutrition": {
-      "title": "Nutri",
-      "A": "Sehr gut im Vergleich zu Produkten aus der gleichen Produktgruppe",
-      "B": "Gut im Vergleich zu Produkten aus der gleichen Produktgruppe",
-      "C": "Mäßig im Vergleich zu Produkten aus der gleichen Produktgruppe",
-      "D": "Schlecht im Vergleich zu Produkten aus der gleichen Produktgruppe",
-      "E": "Sehr schlecht im Vergleich zu Produkten aus der gleichen Produktgruppe"
-    },
-    "plantGrade": {
-      "title": "Pflanzenbasis",
-      "1": "Alle Zutaten sind vegan und vegetarisch.",
-      "2": "Dies sollte möglichst nie der Fall sein.",
-      "3": "Alle Zutaten sind vegetarisch, aber mindestens eine ist nicht vegan.",
-      "4": "Es gibt Zutaten, die weder pflanzlich noch vegan sind."
-    }
-  },
-  "scanner": {
-    "description": "Scanne dein erstes Produkt, um dich über Inhaltsstofe und Qualität zu informieren.",
-    "button": "Scanner öffnen"
-  }
+	"infoModal": {
+		"titel": "Info",
+		"sourceTitle": "Wie wir unsere Daten erhalten:",
+		"sourceText": "Wir verwenden die OpenFoodFacts API, um unsere Daten zu erhalten. Dies bedeutet, dass wir Zugang zu einer großen Datenbank mit Lebensmitteln haben. Dies ermöglicht es uns, Ihnen Informationen über das gescannte Produkt zur Verfügung zu stellen.",
+		"dataAnomaliesTitle": "Warum die Daten manchmal seltsam aussehen:",
+		"dataAnomaliesText": "Da alle Daten in OpenFoodFacts von der Gemeinschaft stammen oder automatisch analysiert werden, gibt es manchmal Fehler in den Daten. Dies kann alles sein, von falschen Zutaten oder falscher Clusterung von Zutaten bis hin zu fehlenden Informationen.",
+		"contributionTitle": "Wie Sie beitragen können:",
+		"contributionText": "Du kannst die Datenqualität verbessern, indem Du einen Beitrag zur OpenFoodFacts-Datenbank leisten. Du kannst dies tun, indem du Produkte mit deinem Handy scannst und Bilder hochlädst. Auf diese Weise kannst Du dazu beitragen, die Datenbank noch größer und besser zu machen.",
+		"furtherInformation": "Erfahre mehr auf der",
+		"externalLink": "OpenFoodFacts-Website"
+	},
+	"bottomTabNavigation": {
+		"history": "Verlauf",
+		"scan": "Scanner",
+		"about": "Über uns"
+	},
+	"navigation": {
+		"back": "Zurück",
+		"barcodeTitle": "Produktinformationen",
+		"detailsTitle": "Detailansicht"
+	},
+	"about": {
+		"aboutMe": "Über mich",
+		"analytics": "Fakten und Zahlen",
+		"terms": "Nutzungsbedingungen",
+		"privacy": "Datenschutz",
+		"contact": "Nimm Kontakt auf",
+		"coffee": "Kauf mir einen Kaffee"
+	},
+	"scores": {
+		"processedGrade": {
+			"title": "NOVA",
+			"1": "Unverarbeitete oder minimal verarbeitete Lebensmittel (Frisch, Tiefgrefroren, Fermentiert)",
+			"2": "Verarbeitete kulinarische Zutaten (Gepresst, Raffiniert, Gemahlen)",
+			"3": "Verarbeitete Lebensmittel (Geräuchert, Gebacken, Konserviert)",
+			"4": "Ultraverarbeitete Lebensmittel und Getränke (Mehrere Verarbeitungsschritte, Konservierungsstoffe)"
+		},
+		"nutrition": {
+			"title": "Nutri",
+			"A": "Sehr gut im Vergleich zu Produkten aus der gleichen Produktgruppe",
+			"B": "Gut im Vergleich zu Produkten aus der gleichen Produktgruppe",
+			"C": "Mäßig im Vergleich zu Produkten aus der gleichen Produktgruppe",
+			"D": "Schlecht im Vergleich zu Produkten aus der gleichen Produktgruppe",
+			"E": "Sehr schlecht im Vergleich zu Produkten aus der gleichen Produktgruppe"
+		},
+		"plantGrade": {
+			"title": "Pflanzenbasis",
+			"1": "Alle Zutaten sind vegan und vegetarisch.",
+			"2": "Dies sollte möglichst nie der Fall sein.",
+			"3": "Alle Zutaten sind vegetarisch, aber mindestens eine ist nicht vegan.",
+			"4": "Es gibt Zutaten, die weder pflanzlich noch vegan sind."
+		}
+	},
+	"scanner": {
+		"description": "Scanne dein erstes Produkt, um dich über Inhaltsstofe und Qualität zu informieren.",
+		"button": "Scanner öffnen"
+	}
 }

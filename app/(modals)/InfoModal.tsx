@@ -1,46 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { Platform, StyleSheet } from "react-native";
 
-import { Text, View } from '@/components/atoms/Themed';
-import { ExternalLink } from '@/components/atoms/ExternalLink';
-import { useTranslation } from '@/hooks/useTranslation';
+import { ExternalLink } from "@/components/atoms/ExternalLink";
+import { Text, View } from "@/components/atoms/Themed";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export default function InfoModal() {
-  const t = useTranslation();
-  return (
-    <View style={styles.container}>
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-      <Text style={styles.title}>{t('infoModal.sourceTitle')}</Text>
-      <Text>{t('infoModal.sourceText')}</Text>
-      <Text style={styles.title}>{t('infoModal.dataAnomaliesTitle')}</Text>
-      <Text>{t('infoModal.dataAnomaliesText')}</Text>
-      <Text style={styles.title}>{t('infoModal.contributionTitle')}</Text>
-      <Text>{t('infoModal.contributionText')}</Text>
-      <Text>
-        {t('infoModal.furtherInformation')}{' '}
-        <ExternalLink href={'https://de.openfoodfacts.org/'}>
-          {t('infoModal.externalLink')}
-        </ExternalLink>
-      </Text>
-    </View>
-  );
+	const t = useTranslation();
+	return (
+		<View style={styles.container}>
+			<StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
+			<Text style={styles.title}>{t("infoModal.sourceTitle")}</Text>
+			<Text>{t("infoModal.sourceText")}</Text>
+			<Text style={styles.title}>{t("infoModal.dataAnomaliesTitle")}</Text>
+			<Text>{t("infoModal.dataAnomaliesText")}</Text>
+			<Text style={styles.title}>{t("infoModal.contributionTitle")}</Text>
+			<Text>{t("infoModal.contributionText")}</Text>
+			<Text>
+				{t("infoModal.furtherInformation")}{" "}
+				<ExternalLink href={"https://de.openfoodfacts.org/"}>
+					{t("infoModal.externalLink")}
+				</ExternalLink>
+			</Text>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15,
-    paddingBottom: 50,
-    backgroundColor: 'transparent',
-    gap: 4,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+	container: {
+		flex: 1,
+		padding: 15,
+		paddingBottom: 50,
+		backgroundColor: "transparent",
+		gap: 4,
+	},
+	title: {
+		fontSize: 20,
+		fontWeight: "bold",
+	},
+	separator: {
+		marginVertical: 30,
+		height: 1,
+		width: "80%",
+	},
 });
